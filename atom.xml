@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>半句唐诗的博客</title>
+  
+  <subtitle>Keep Thinking</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-04-30T11:18:07.586Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>半句唐诗</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux下send错误代码32</title>
+    <link href="http://yoursite.com/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/"/>
+    <id>http://yoursite.com/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/</id>
+    <published>2020-04-30T11:14:41.000Z</published>
+    <updated>2020-04-30T11:18:07.586Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken-pipe，即管道破裂。&quot;&gt;&lt;a href=&quot;#问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而er
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【AI记录】机器学习与深度学习</title>
+    <link href="http://yoursite.com/2020/04/30/Deep-Learning/"/>
+    <id>http://yoursite.com/2020/04/30/Deep-Learning/</id>
+    <published>2020-04-30T11:01:54.000Z</published>
+    <updated>2020-04-30T11:06:17.556Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;今天来讲讲机器学习-Machine-Learning，ML-与深度学习（Deep-Learning，DL）&quot;&gt;&lt;a href=&quot;#今天来讲讲机器学习-Machine-Learning，ML-与深度学习（Deep-Learning，DL）&quot; class=&quot;heade
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Deep-Learing" scheme="http://yoursite.com/tags/Deep-Learing/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用python3写一个简单的百度翻译小字典</title>
+    <link href="http://yoursite.com/2020/04/30/python%E7%99%BE%E5%BA%A6%E5%AD%97%E5%85%B8/"/>
+    <id>http://yoursite.com/2020/04/30/python%E7%99%BE%E5%BA%A6%E5%AD%97%E5%85%B8/</id>
+    <published>2020-04-30T08:53:17.000Z</published>
+    <updated>2020-04-30T10:18:53.932Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;利用python3写一个简单的百度翻译小字典&quot;&gt;&lt;a href=&quot;#利用python3写一个简单的百度翻译小字典&quot; class=&quot;headerlink&quot; title=&quot;利用python3写一个简单的百度翻译小字典&quot;&gt;&lt;/a&gt;利用python3写一个简单的百度翻译小
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python猜数字小游戏</title>
+    <link href="http://yoursite.com/2020/04/30/python%E7%8C%9C%E6%95%B0%E5%AD%97/"/>
+    <id>http://yoursite.com/2020/04/30/python%E7%8C%9C%E6%95%B0%E5%AD%97/</id>
+    <published>2020-04-30T08:36:53.000Z</published>
+    <updated>2020-04-30T10:18:24.382Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;这是一个学习项目&quot;&gt;&lt;a href=&quot;#这是一个学习项目&quot; class=&quot;headerlink&quot; title=&quot;这是一个学习项目&quot;&gt;&lt;/a&gt;这是一个学习项目&lt;/h3&gt;&lt;p&gt;游戏原理介绍：&lt;/p&gt;
+&lt;p&gt;这个猜数字的小游戏，相信很多人以前玩过，就是一个人从1-100
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Welcome</title>
+    <link href="http://yoursite.com/2020/04/30/Welcome/"/>
+    <id>http://yoursite.com/2020/04/30/Welcome/</id>
+    <published>2020-04-30T07:45:57.000Z</published>
+    <updated>2020-04-30T10:17:41.914Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;这是开始&quot;&gt;&lt;a href=&quot;#这是开始&quot; class=&quot;headerlink&quot; title=&quot;这是开始&quot;&gt;&lt;/a&gt;这是开始&lt;/h2&gt;&lt;p&gt;欢迎来到这里&lt;br&gt;我会在这里&lt;br&gt;分享日常&lt;br&gt;分享代码&lt;br&gt;分享生活  &lt;/p&gt;
+&lt;p&gt;ありがとうございます&lt;/p
+      
+    
+    </summary>
+    
+    
+    
+      <category term="welcome" scheme="http://yoursite.com/tags/welcome/"/>
+    
+  </entry>
+  
+</feed>

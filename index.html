@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -73,6 +80,10 @@
 
 
 
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="半句唐诗的博客" type="application/atom+xml" />
 
 
 
@@ -94,7 +105,7 @@
     root: '/',
     scheme: 'Muse',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -177,7 +188,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="https://HalfOfPoetry.github.io/index.html" target="_blank" rel="section noopener">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -197,7 +208,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -207,9 +218,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -224,6 +269,338 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="半句唐诗">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://q9lfq1grf.bkt.clouddn.com/libai.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="半句唐诗的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/" itemprop="url">Linux下send错误代码32</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-30T19:14:41+08:00">
+                2020-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  432
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+        
+          
+          问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken pipe，即管道破裂。问题形成原因：后来通过排查研究，发现出现该种问题出现的可能性为以下两种：
+1.socket失败，与服务器端的链接没有成功，从而管道破裂。
+2.服务端
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/30/Deep-Learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="半句唐诗">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://q9lfq1grf.bkt.clouddn.com/libai.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="半句唐诗的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/30/Deep-Learning/" itemprop="url">【AI记录】机器学习与深度学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-30T19:01:54+08:00">
+                2020-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  510
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+        
+          
+          今天来讲讲机器学习(Machine Learning，ML)与深度学习（Deep Learning，DL）首先，要论这两个东西，得先了解人工智能（AI），AI与机器学习以及深度学习之间的关系，用集合关系来描述，就是：
+深度学习包含于机器学习，机器学习包含于AI；
+机器学习 作为AI的子领域，也是其核
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/30/Deep-Learning/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -303,7 +680,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  364
+                  363
                 </span>
               
 
@@ -341,36 +718,31 @@
 
       
         
+        
           
-            <h2 id="利用python3写一个简单的百度翻译小字典"><a href="#利用python3写一个简单的百度翻译小字典" class="headerlink" title="利用python3写一个简单的百度翻译小字典"></a>利用python3写一个简单的百度翻译小字典</h2><p>声明：此例子为学习例子，通过百度翻译的XHR来实现的</p>
-<p>最近在重新学习python3，尝试着利用它来抓取网页上的数据。</p>
-<p>在用百度翻译的时候，看到<br><img src="https://img-blog.csdnimg.cn/20200306170733883.png" alt="pic"><br>突发奇想想做一个百度小字典的玩意儿</p>
-<p>于是开始了学习之路</p>
-<p>首先利用浏览器的网页工具查看其工作原理是利用xhr请求来获取数据</p>
-<p>于是我们可以<br><img src="https://img-blog.csdnimg.cn/20200306171320636.png" alt="pic2"><br>在network工具下选择xhr协议</p>
-<p>在preview模式中找到具体的流数据（json）<br><img src="https://img-blog.csdnimg.cn/20200306171540999.png" alt="pic3"><br>在headres中我们最先注意的只有两个<br><img src="https://img-blog.csdnimg.cn/20200306171916906.png" alt="pic4"><br>就是找到Request Url和Method，很明显是<a href="https://fanyi.baidu.com/sug和post" target="_blank" rel="noopener">https://fanyi.baidu.com/sug和post</a></p>
-<p>所以我们确定了用到的东西有</p>
-<p>import requests        #导入requests包</p>
-<p>import json</p>
-<p>既然是post，我们就得去寻找post的数据是什么<br><img src="https://img-blog.csdnimg.cn/2020030617224252.png" alt="pic5"><br>可以发现，这是一个很简单的数据模式</p>
-<p>我们就可以先定义</p>
-<p>From_data = {‘kw’,’hello’}</p>
-<p>url = ‘<a href="https://fanyi.baidu.com/sug&#39;" target="_blank" rel="noopener">https://fanyi.baidu.com/sug&#39;</a></p>
-<p>请求方式：</p>
-<p>response = requests.post(url,data=From_data)</p>
-<p>获取表单方式后进行json转换：</p>
-<p>content = json.loads(response.text)</p>
-<p>content中有即是我们要的查询结果。</p>
-<p>截图运行效果如下（截图附代码）：<br><img src="https://img-blog.csdnimg.cn/202003061727026.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNjc2ODc=,size_16,color_FFFFFF,t_70" alt="pic6"><br>后面的格式如何转换，就是进一步的事了，这简单的百度小词典就完成啦~</p>
-<p>PS：利用这种方式，可以实现很多借用第三方的功能。</p>
-
-          
+          利用python3写一个简单的百度翻译小字典声明：此例子为学习例子，通过百度翻译的XHR来实现的
+最近在重新学习python3，尝试着利用它来抓取网页上的数据。
+在用百度翻译的时候，看到突发奇想想做一个百度小字典的玩意儿
+于是开始了学习之路
+首先利用浏览器的网页工具查看其工作原理是利用xhr请求来获
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/30/python%E7%99%BE%E5%BA%A6%E5%AD%97%E5%85%B8/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
     
     
     
+
+    <div>
+      
+    </div>
 
     
 
@@ -476,7 +848,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  452
+                  427
                 </span>
               
 
@@ -514,84 +886,29 @@
 
       
         
+        
           
-            <h2 id="python猜数字小游戏"><a href="#python猜数字小游戏" class="headerlink" title="python猜数字小游戏"></a>python猜数字小游戏</h2><p>这是一个学习项目</p>
-<p>游戏原理介绍：</p>
-<p>这个猜数字的小游戏，相信很多人以前玩过，就是一个人从1-100中随机写一个数字，然后另外一群人去猜，猜一个数字的时候，就会告诉你所猜的数字大了还是小了，渐渐缩小范围，直到最后猜对的人，为最后的胜利者。</p>
-<p>现在把生成数字和裁判的角色，交给代码，这样即使只有自己一个人的时候，也可以玩这样的游戏</p>
-<p>经过上述游戏分析，我们就可以开始一套简单的思路</p>
-<p>1.随机数的生成，我们就得需要用到random模块</p>
-<p>2.猜数字的次数为多次，所以我们需要封装一个猜数字的函数</p>
-<p>3.需要记录猜数字的区间范围</p>
-<p>4.得防止用户使用不得当，输入字符不符导致程序异常</p>
-<p>5.游戏过程中玩家终止游戏操作</p>
-<p>于是，我们可以根据思路简单编写一下代码：</p>
-<p>import random</p>
-<p>n = random.randint(1,100) # 生成1 - 100的随机整</p>
-<p>step = 0</p>
-<p>low = 1</p>
-<p>high = 100</p>
-<p>def get_number(low = 1,high = 100):</p>
-<pre><code>while True:
-
-    print(&quot;Please enter an integer&quot;,low,&quot;to&quot;,high,&quot;:&quot;)
-
-    guess = input()
-
-    if guess.isdigit():# 字符串是否为数字，是True，否False
-
-        guess = int(guess)
-
-        return guess
-
-    else:
-
-        continue</code></pre><p>print(“Game Init”)</p>
-<p>guess = get_number()</p>
-<p>while True:</p>
-<pre><code>step += 1
-
-print(&quot;step :&quot;,step)
-
-
-
-if guess == 0:
-
-    print(&quot;quit&quot;)
-
-    break
-
-if guess &lt; n:
-
-    print(guess,&quot;is low&quot;)
-
-    low = guess + 1
-
-elif guess &gt; n:
-
-    print(guess,&quot;is high&quot;)
-
-    high = guess - 1
-
-else:
-
-    print(&quot;you win!&quot;)
-
-    break
-
-guess = get_number(low,high) # 继续猜</code></pre><p>print(“Game Over”)</p>
-<p>执行结果如下：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200323150728216.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNjc2ODc=,size_16,color_FFFFFF,t_70" alt="图片"></p>
-<p>简单易学，轻松上手</p>
-<p>可以根据自己对游戏的理解和需求，封装更多有趣的玩法</p>
-
-          
+          这是一个学习项目游戏原理介绍：
+这个猜数字的小游戏，相信很多人以前玩过，就是一个人从1-100中随机写一个数字，然后另外一群人去猜，猜一个数字的时候，就会告诉你所猜的数字大了还是小了，渐渐缩小范围，直到最后猜对的人，为最后的胜利者。
+现在把生成数字和裁判的角色，交给代码，这样即使只有自己一个人的时候
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/30/python%E7%8C%9C%E6%95%B0%E5%AD%97/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
     
     
     
+
+    <div>
+      
+    </div>
 
     
 
@@ -735,18 +1052,29 @@ guess = get_number(low,high) # 继续猜</code></pre><p>print(“Game Over”)</
 
       
         
+        
           
-            <p>##这是开始</p>
-<p>欢迎来到这里<br>我会在这里<br>分享日常<br>分享代码<br>分享生活  </p>
-<p>ありがとうございます</p>
+          这是开始欢迎来到这里我会在这里分享日常分享代码分享生活  
+ありがとうございます
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/30/Welcome/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
     
     
     
+
+    <div>
+      
+    </div>
 
     
 
@@ -824,7 +1152,7 @@ guess = get_number(low,high) # 继续猜</code></pre><p>print(“Game Over”)</
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -837,7 +1165,7 @@ guess = get_number(low,high) # 继续猜</code></pre><p>print(“Game Over”)</
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -845,6 +1173,13 @@ guess = get_number(low,high) # 继续猜</code></pre><p>print(“Game Over”)</
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
@@ -878,10 +1213,10 @@ guess = get_number(low,high) # 继续猜</code></pre><p>print(“Game Over”)</
         <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
         <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
         <div class="widget-wrap">
-            <h3 class="widget-title">Tag Cloud</h3>
+            <h3 class="widget-title">标签们</h3>
             <div id="myCanvasContainer" class="widget tagcloud">
                 <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/welcome/" rel="tag">welcome</a><span class="tag-list-count">1</span></li></ul>
+                    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learing/" rel="tag">Deep-Learing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/welcome/" rel="tag">welcome</a><span class="tag-list-count">1</span></li></ul>
                 </canvas>
             </div>
         </div>
@@ -911,7 +1246,7 @@ guess = get_number(low,high) # 继续猜</code></pre><p>print(“Game Over”)</
 
 
   <div class="theme-info">
-    <span class="post-count">博客全站共844字</span>
+    <span class="post-count">博客全站共1.8k字</span>
   </div>
 
 
@@ -955,6 +1290,8 @@ guess = get_number(low,high) # 继续猜</code></pre><p>print(“Game Over”)</
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
@@ -1078,6 +1415,323 @@ guess = get_number(low,high) # 继续猜</code></pre><p>print(“Game Over”)</
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
