@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Dll_Inject," />
 
 
 
@@ -82,11 +82,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="半句唐诗的博客">
-<meta property="og:url" content="http://halfofpoetry.github.io/tags/Deep-Learing/index.html">
+<meta name="description" content="注册表注入DLL顾名思义，就是通过注册表的方式，把需要的执行的代码片段，注入到目标程序中，使目标程序执行指定的代码片段，从而达到预期效果。该方式依赖user32.dll，也就是说，需要可执行程序调用到这个系统动态库，我们注入的dll才会被执行到。你应该也发现了，这个意思就是这是一种全局的注入，也就是说，所有调用到user32.dll的程序，都会调用到我们注入成功的dll，所以用这种方式还是要精心设">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DLL注入之注册表注入">
+<meta property="og:url" content="http://halfofpoetry.github.io/2020/05/07/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="半句唐诗的博客">
+<meta property="og:description" content="注册表注入DLL顾名思义，就是通过注册表的方式，把需要的执行的代码片段，注入到目标程序中，使目标程序执行指定的代码片段，从而达到预期效果。该方式依赖user32.dll，也就是说，需要可执行程序调用到这个系统动态库，我们注入的dll才会被执行到。你应该也发现了，这个意思就是这是一种全局的注入，也就是说，所有调用到user32.dll的程序，都会调用到我们注入成功的dll，所以用这种方式还是要精心设">
+<meta property="article:published_time" content="2020-05-07T03:02:27.000Z">
+<meta property="article:modified_time" content="2020-05-07T03:42:34.290Z">
 <meta property="article:author" content="半句唐诗">
+<meta property="article:tag" content="Dll_Inject">
 <meta name="twitter:card" content="summary">
 
 
@@ -117,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://halfofpoetry.github.io/tags/Deep-Learing/"/>
+  <link rel="canonical" href="http://halfofpoetry.github.io/2020/05/07/DLL注入之注册表注入/"/>
 
 
 
 
 
-  <title>标签: Deep-Learing | 半句唐诗的博客</title>
+  <title>DLL注入之注册表注入 | 半句唐诗的博客</title>
   
 
 
@@ -142,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -260,54 +265,221 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Deep-Learing<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://halfofpoetry.github.io/2020/05/07/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="半句唐诗">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://q9lfq1grf.bkt.clouddn.com/libai.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="半句唐诗的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/04/30/Deep-Learning/" itemprop="url">
-              
-                <span itemprop="name">【AI记录】机器学习与深度学习</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">DLL注入之注册表注入</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-04-30T19:01:54+08:00"
-              content="2020-04-30" >
-          04-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-07T11:02:27+08:00">
+                2020-05-07
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  947
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="注册表注入DLL"><a href="#注册表注入DLL" class="headerlink" title="注册表注入DLL"></a>注册表注入DLL</h3><p>顾名思义，就是通过注册表的方式，把需要的执行的代码片段，注入到目标程序中，使目标程序执行指定的代码片段，从而达到预期效果。<br>该方式依赖user32.dll，也就是说，需要可执行程序调用到这个系统动态库，我们注入的dll才会被执行到。<br>你应该也发现了，这个意思就是这是一种全局的注入，也就是说，所有调用到user32.dll的程序，都会调用到我们注入成功的dll，所以用这种方式还是要精心设计一下程序思路和限制条件。</p>
+<h3 id="注册表位置："><a href="#注册表位置：" class="headerlink" title="注册表位置："></a>注册表位置：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; AppInit_Dlls(64位程序读取)</span><br><span class="line">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows [AppInit_DLLs]</span><br><span class="line"></span><br><span class="line">AppInit_Dlls(32位程序读取)</span><br><span class="line">HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Windows [AppInit_DLLs]</span><br><span class="line"></span><br><span class="line">32位系统：</span><br><span class="line">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows [AppInit_DLLs]</span><br></pre></td></tr></table></figure>
+<h3 id="注册表的认识："><a href="#注册表的认识：" class="headerlink" title="注册表的认识："></a>注册表的认识：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 注册表根：</span><br><span class="line">&#x2F;&#x2F; HKEY_CLASSES_ROOT</span><br><span class="line">&#x2F;&#x2F; HKEY_LOCAL_MACHINE</span><br><span class="line">&#x2F;&#x2F; HKEY_CURRENT_USER</span><br><span class="line">&#x2F;&#x2F; HKEY_USERS</span><br><span class="line">&#x2F;&#x2F; HKEY_CURRENT_CONFIG</span><br></pre></td></tr></table></figure>
+<p>这几个的意义不多做阐述，需要自行了解每个节点的意义，但是其实从命名上也能猜出一二<br>需要了解的是这几个玩意儿：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; AppInit_DLLs  LoadAppInit_DLLs RequireSignedAppInit_DLLs</span><br></pre></td></tr></table></figure>
+<p>AppInit_DLLs:是注册表在中的一个系统设置项，它的值可以为一个dll路径列表,其实这里就是我们要注入的dll（注意：这里是全局注入）<br>LoadAppInit_DLLs：真正做过该内容开发的人，就会发现，xp下是没有这个项的，而大于win7的系统版本下才有这个项，LoadAppInit_DLLs 为1开启，为0关闭，（Win7默认为0）<br>RequireSignedAppInit_DLLs：这个的xp下也是没有的，值为1表明模块需要签名才能加载，反之则不行</p>
+<p>AppInit_DLLs详细的键值介绍，可以查看官方文档（Win7）：<br><a href="https://docs.microsoft.com/zh-cn/windows/win32/win7appqual/appinit-dlls-in-windows-7-and-windows-server-2008-r2?redirectedfrom=MSDN" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/windows/win32/win7appqual/appinit-dlls-in-windows-7-and-windows-server-2008-r2?redirectedfrom=MSDN</a></p>
+<h3 id="需要认识的API"><a href="#需要认识的API" class="headerlink" title="需要认识的API"></a>需要认识的API</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; API: RegOpenKeyEx RegSetValueEx RegQueryValueEx RegCloseKey</span><br><span class="line">&#x2F;&#x2F; 权限：KEY_READ KEY_WRITE KEY_EXECUTE KEY_ALL_ACCESS</span><br><span class="line">&#x2F;&#x2F; 涉及的数据类型：REG_SZ REG_DWORD</span><br></pre></td></tr></table></figure>
+<p>RegOpenKeyEx：打开注册表路径，调用时候，只需要打开到所需要修改设置项的路径，例如：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows （真正调用的时候注意转义）<br>再打开注册表的时候，可以通过设置：KEY_READ KEY_WRITE KEY_EXECUTE KEY_ALL_ACCESS来获取读写权限，当然也有可能获取失败的时候，所以要关注返回值</p>
+<p>RegQueryValueEx：查询对应的键值<br>RegSetValueEx：设置键值<br>RegCloseKey：关闭当前打开的注册表<br>在调用过程中注意返回值类型，可以用ERROR_SUCCESS去判断是否调用成功，其他类型可以查看相关文档。<br>其他不做赘述了</p>
+<h3 id="写一个简单demo："><a href="#写一个简单demo：" class="headerlink" title="写一个简单demo："></a>写一个简单demo：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	HKEY hKey;</span><br><span class="line">	<span class="keyword">char</span> *csAppInitValue = <span class="string">"C:\\test.dll"</span>;</span><br><span class="line">	DWORD dwLoadAppInitValue = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> csSubKey[] = <span class="string">"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\"</span>;</span><br><span class="line">    LSTATUS lsRet = RegOpenKeyEx(HKEY_LOCAL_MACHINE,csSubKey,<span class="number">0</span>,KEY_ALL_ACCESS,&amp;hKey);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (lsRet != ERROR_SUCCESS)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Open Key Failed....\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">char</span> csBuf[<span class="number">100</span>] = <span class="string">""</span>;</span><br><span class="line">	DWORD dwSize = <span class="number">100</span>;</span><br><span class="line">	DWORD dwType = <span class="number">0</span>;</span><br><span class="line">	RegQueryValueEx(hKey,<span class="string">"AppInit_DLLs"</span>,<span class="number">0</span>,&amp;dwType,(LPBYTE)csBuf,&amp;dwSize);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> nSize = <span class="built_in">strlen</span>(csAppInitValue);</span><br><span class="line">	lsRet = RegSetValueEx(hKey,<span class="string">"AppInit_DLLs"</span>,<span class="number">0</span>,REG_SZ,(<span class="keyword">const</span> BYTE *)csAppInitValue,nSize+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (lsRet != ERROR_SUCCESS)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Set Key Failed....\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	lsRet = RegSetValueEx(hKey,<span class="string">"LoadAppInit_DLLs"</span>,<span class="number">0</span>,REG_DWORD,(<span class="keyword">const</span> BYTE *)&amp;dwLoadAppInitValue,<span class="keyword">sizeof</span>(DWORD));</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (lsRet != ERROR_SUCCESS)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Set Key Failed....\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	RegCloseKey(hKey);</span><br><span class="line"></span><br><span class="line">    getchar();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>对了，如何查看程序调用了哪些dll，这是一个新手问题，在这里我推荐一个很好用的工具：Process Explorer<br>这个工具，可以定位程序包括pid与调用的动态库等几乎所有的程序相关信息，具体怎么用，可以自行网络搜索，或者后续等我出一篇使用经验，哈哈哈，这个可能要等很久。<br>有兴趣可以联系我，一起分享学习经验，哈哈哈~</p>
 
       
     </div>
+    
+    
+    
 
+    <div>
+      
+        
+      
+    </div>
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    半句唐诗
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://halfofpoetry.github.io/2020/05/07/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/" title="DLL注入之注册表注入">http://halfofpoetry.github.io/2020/05/07/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Dll-Inject/" rel="tag"># Dll_Inject</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/07/Windows%E7%BC%96%E7%A8%8B%E4%B9%8BDLL%E6%B3%A8%E5%85%A5/" rel="next" title="Windows编程之DLL注入">
+                <i class="fa fa-chevron-left"></i> Windows编程之DLL注入
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -315,6 +487,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -335,8 +511,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -414,6 +599,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册表注入DLL"><span class="nav-number">1.</span> <span class="nav-text">注册表注入DLL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注册表位置："><span class="nav-number">2.</span> <span class="nav-text">注册表位置：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注册表的认识："><span class="nav-number">3.</span> <span class="nav-text">注册表的认识：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要认识的API"><span class="nav-number">4.</span> <span class="nav-text">需要认识的API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写一个简单demo："><span class="nav-number">5.</span> <span class="nav-text">写一个简单demo：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">6.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -582,6 +783,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

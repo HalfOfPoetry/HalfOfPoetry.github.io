@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://halfofpoetry.github.io/"/>
-  <updated>2020-05-07T01:49:53.629Z</updated>
+  <updated>2020-05-07T03:42:34.290Z</updated>
   <id>http://halfofpoetry.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>DLL注入之注册表注入</title>
+    <link href="http://halfofpoetry.github.io/2020/05/07/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/"/>
+    <id>http://halfofpoetry.github.io/2020/05/07/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/</id>
+    <published>2020-05-07T03:02:27.000Z</published>
+    <updated>2020-05-07T03:42:34.290Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;注册表注入DLL&quot;&gt;&lt;a href=&quot;#注册表注入DLL&quot; class=&quot;headerlink&quot; title=&quot;注册表注入DLL&quot;&gt;&lt;/a&gt;注册表注入DLL&lt;/h3&gt;&lt;p&gt;顾名思义，就是通过注册表的方式，把需要的执行的代码片段，注入到目标程序中，使目标程序执行指定
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Dll_Inject" scheme="http://halfofpoetry.github.io/tags/Dll-Inject/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Windows编程之DLL注入</title>
     <link href="http://halfofpoetry.github.io/2020/05/07/Windows%E7%BC%96%E7%A8%8B%E4%B9%8BDLL%E6%B3%A8%E5%85%A5/"/>
     <id>http://halfofpoetry.github.io/2020/05/07/Windows%E7%BC%96%E7%A8%8B%E4%B9%8BDLL%E6%B3%A8%E5%85%A5/</id>
     <published>2020-05-07T01:21:01.000Z</published>
-    <updated>2020-05-07T01:49:53.629Z</updated>
+    <updated>2020-05-07T03:19:22.164Z</updated>
     
     <summary type="html">
     
