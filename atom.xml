@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-04-30T11:18:07.586Z</updated>
+  <updated>2020-05-07T01:49:53.629Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows编程之DLL注入</title>
+    <link href="http://yoursite.com/2020/05/07/Windows%E7%BC%96%E7%A8%8B%E4%B9%8BDLL%E6%B3%A8%E5%85%A5/"/>
+    <id>http://yoursite.com/2020/05/07/Windows%E7%BC%96%E7%A8%8B%E4%B9%8BDLL%E6%B3%A8%E5%85%A5/</id>
+    <published>2020-05-07T01:21:01.000Z</published>
+    <updated>2020-05-07T01:49:53.629Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Windows编程中不得不懂的一项实用技巧&quot;&gt;&lt;a href=&quot;#Windows编程中不得不懂的一项实用技巧&quot; class=&quot;headerlink&quot; title=&quot;Windows编程中不得不懂的一项实用技巧&quot;&gt;&lt;/a&gt;Windows编程中不得不懂的一项实用技巧&lt;/
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Windows" scheme="http://yoursite.com/tags/Windows/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux下send错误代码32</title>
