@@ -5,9 +5,9 @@
   <subtitle>Keep Thinking</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://halfofpoetry.github.io/"/>
   <updated>2020-05-07T01:49:53.629Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://halfofpoetry.github.io/</id>
   
   <author>
     <name>半句唐诗</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Windows编程之DLL注入</title>
-    <link href="http://yoursite.com/2020/05/07/Windows%E7%BC%96%E7%A8%8B%E4%B9%8BDLL%E6%B3%A8%E5%85%A5/"/>
-    <id>http://yoursite.com/2020/05/07/Windows%E7%BC%96%E7%A8%8B%E4%B9%8BDLL%E6%B3%A8%E5%85%A5/</id>
+    <link href="http://halfofpoetry.github.io/2020/05/07/Windows%E7%BC%96%E7%A8%8B%E4%B9%8BDLL%E6%B3%A8%E5%85%A5/"/>
+    <id>http://halfofpoetry.github.io/2020/05/07/Windows%E7%BC%96%E7%A8%8B%E4%B9%8BDLL%E6%B3%A8%E5%85%A5/</id>
     <published>2020-05-07T01:21:01.000Z</published>
     <updated>2020-05-07T01:49:53.629Z</updated>
     
@@ -34,14 +34,14 @@
     
     
     
-      <category term="Windows" scheme="http://yoursite.com/tags/Windows/"/>
+      <category term="Windows" scheme="http://halfofpoetry.github.io/tags/Windows/"/>
     
   </entry>
   
   <entry>
     <title>Linux下send错误代码32</title>
-    <link href="http://yoursite.com/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/"/>
-    <id>http://yoursite.com/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/</id>
+    <link href="http://halfofpoetry.github.io/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/"/>
+    <id>http://halfofpoetry.github.io/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/</id>
     <published>2020-04-30T11:14:41.000Z</published>
     <updated>2020-04-30T11:18:07.586Z</updated>
     
@@ -56,14 +56,14 @@
     
     
     
-      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+      <category term="Linux" scheme="http://halfofpoetry.github.io/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>【AI记录】机器学习与深度学习</title>
-    <link href="http://yoursite.com/2020/04/30/Deep-Learning/"/>
-    <id>http://yoursite.com/2020/04/30/Deep-Learning/</id>
+    <link href="http://halfofpoetry.github.io/2020/04/30/Deep-Learning/"/>
+    <id>http://halfofpoetry.github.io/2020/04/30/Deep-Learning/</id>
     <published>2020-04-30T11:01:54.000Z</published>
     <updated>2020-04-30T11:06:17.556Z</updated>
     
@@ -78,14 +78,14 @@
     
     
     
-      <category term="Deep-Learing" scheme="http://yoursite.com/tags/Deep-Learing/"/>
+      <category term="Deep-Learing" scheme="http://halfofpoetry.github.io/tags/Deep-Learing/"/>
     
   </entry>
   
   <entry>
     <title>利用python3写一个简单的百度翻译小字典</title>
-    <link href="http://yoursite.com/2020/04/30/python%E7%99%BE%E5%BA%A6%E5%AD%97%E5%85%B8/"/>
-    <id>http://yoursite.com/2020/04/30/python%E7%99%BE%E5%BA%A6%E5%AD%97%E5%85%B8/</id>
+    <link href="http://halfofpoetry.github.io/2020/04/30/python%E7%99%BE%E5%BA%A6%E5%AD%97%E5%85%B8/"/>
+    <id>http://halfofpoetry.github.io/2020/04/30/python%E7%99%BE%E5%BA%A6%E5%AD%97%E5%85%B8/</id>
     <published>2020-04-30T08:53:17.000Z</published>
     <updated>2020-04-30T10:18:53.932Z</updated>
     
@@ -100,14 +100,14 @@
     
     
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+      <category term="python" scheme="http://halfofpoetry.github.io/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>python猜数字小游戏</title>
-    <link href="http://yoursite.com/2020/04/30/python%E7%8C%9C%E6%95%B0%E5%AD%97/"/>
-    <id>http://yoursite.com/2020/04/30/python%E7%8C%9C%E6%95%B0%E5%AD%97/</id>
+    <link href="http://halfofpoetry.github.io/2020/04/30/python%E7%8C%9C%E6%95%B0%E5%AD%97/"/>
+    <id>http://halfofpoetry.github.io/2020/04/30/python%E7%8C%9C%E6%95%B0%E5%AD%97/</id>
     <published>2020-04-30T08:36:53.000Z</published>
     <updated>2020-04-30T10:18:24.382Z</updated>
     
@@ -123,14 +123,14 @@
     
     
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+      <category term="python" scheme="http://halfofpoetry.github.io/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>Welcome</title>
-    <link href="http://yoursite.com/2020/04/30/Welcome/"/>
-    <id>http://yoursite.com/2020/04/30/Welcome/</id>
+    <link href="http://halfofpoetry.github.io/2020/04/30/Welcome/"/>
+    <id>http://halfofpoetry.github.io/2020/04/30/Welcome/</id>
     <published>2020-04-30T07:45:57.000Z</published>
     <updated>2020-04-30T10:17:41.914Z</updated>
     
@@ -146,7 +146,7 @@
     
     
     
-      <category term="welcome" scheme="http://yoursite.com/tags/welcome/"/>
+      <category term="welcome" scheme="http://halfofpoetry.github.io/tags/welcome/"/>
     
   </entry>
   

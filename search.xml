@@ -23,6 +23,16 @@
       </tags>
   </entry>
   <entry>
+    <title>Welcome</title>
+    <url>/2020/04/30/Welcome/</url>
+    <content><![CDATA[<h2 id="这是开始"><a href="#这是开始" class="headerlink" title="这是开始"></a>这是开始</h2><p>欢迎来到这里<br>我会在这里<br>分享日常<br>分享代码<br>分享生活  </p>
+<p>ありがとうございます</p>
+]]></content>
+      <tags>
+        <tag>welcome</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux下send错误代码32</title>
     <url>/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/</url>
     <content><![CDATA[<h3 id="问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken-pipe，即管道破裂。"><a href="#问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken-pipe，即管道破裂。" class="headerlink" title="问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken pipe，即管道破裂。"></a>问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken pipe，即管道破裂。</h3><p>问题形成原因：后来通过排查研究，发现出现该种问题出现的可能性为以下两种：</p>
@@ -35,16 +45,6 @@
 ]]></content>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Welcome</title>
-    <url>/2020/04/30/Welcome/</url>
-    <content><![CDATA[<h2 id="这是开始"><a href="#这是开始" class="headerlink" title="这是开始"></a>这是开始</h2><p>欢迎来到这里<br>我会在这里<br>分享日常<br>分享代码<br>分享生活  </p>
-<p>ありがとうございます</p>
-]]></content>
-      <tags>
-        <tag>welcome</tag>
       </tags>
   </entry>
   <entry>
