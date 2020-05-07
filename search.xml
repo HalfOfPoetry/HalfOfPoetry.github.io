@@ -23,21 +23,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux下send错误代码32</title>
-    <url>/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/</url>
-    <content><![CDATA[<h3 id="问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken-pipe，即管道破裂。"><a href="#问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken-pipe，即管道破裂。" class="headerlink" title="问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken pipe，即管道破裂。"></a>问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken pipe，即管道破裂。</h3><p>问题形成原因：后来通过排查研究，发现出现该种问题出现的可能性为以下两种：</p>
-<p>1.socket失败，与服务器端的链接没有成功，从而管道破裂。</p>
-<p>2.服务端将客户端的socket断开，一样造成这样的问题。</p>
-<h3 id="此时这样的程序收到broken-pipe的信号，会自动退出我们可以在产生信号前利用方法-signal-int-signum-sighandler-t-handler-设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息-就是我们经常遇到的问题-。我们可以调用系统的处理方法，也可以自定义处理方法。"><a href="#此时这样的程序收到broken-pipe的信号，会自动退出我们可以在产生信号前利用方法-signal-int-signum-sighandler-t-handler-设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息-就是我们经常遇到的问题-。我们可以调用系统的处理方法，也可以自定义处理方法。" class="headerlink" title="此时这样的程序收到broken pipe的信号，会自动退出我们可以在产生信号前利用方法 signal(int signum, sighandler_t handler) 设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息(就是我们经常遇到的问题)。我们可以调用系统的处理方法，也可以自定义处理方法。"></a>此时这样的程序收到broken pipe的信号，会自动退出我们可以在产生信号前利用方法 signal(int signum, sighandler_t handler) 设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息(就是我们经常遇到的问题)。我们可以调用系统的处理方法，也可以自定义处理方法。</h3><p>对一个已经收到FIN包的socket调用read方法, 如果接收缓冲已空, 则返回0,<br>这就是常说的表示连接关闭. 但第一次对其调用write方法时, 如果发送缓冲没问题,<br>会返回正确写入(发送). 但发送的报文会导致对端发送RST报文,<br>因为对端的socket已经调用了close, 完全关闭, 既不发送, 也不接收数据. 所以,<br>第二次调用write方法(假设在收到RST之后), 会生成SIGPIPE信号, 导致进程退出.</p>
-<h3 id="为了避免进程退出-可以捕获SIGPIPE信号-或者忽略它"><a href="#为了避免进程退出-可以捕获SIGPIPE信号-或者忽略它" class="headerlink" title="为了避免进程退出, 可以捕获SIGPIPE信号, 或者忽略它,"></a>为了避免进程退出, 可以捕获SIGPIPE信号, 或者忽略它,</h3><p>给它设置SIG_IGN信号处理函数:</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">signal(SIGPIPE, SIG_IGN);</span><br></pre></td></tr></table></figure>
-<p>这样, 第二次调用write方法时, 会返回-1, 同时errno置为SIGPIPE.<br>程序便能知道对端已经关闭.</p>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>DLL注入之注册表注入</title>
     <url>/2020/05/07/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/</url>
     <content><![CDATA[<h3 id="注册表注入DLL"><a href="#注册表注入DLL" class="headerlink" title="注册表注入DLL"></a>注册表注入DLL</h3><p>顾名思义，就是通过注册表的方式，把需要的执行的代码片段，注入到目标程序中，使目标程序执行指定的代码片段，从而达到预期效果。<br>该方式依赖user32.dll，也就是说，需要可执行程序调用到这个系统动态库，我们注入的dll才会被执行到。<br>你应该也发现了，这个意思就是这是一种全局的注入，也就是说，所有调用到user32.dll的程序，都会调用到我们注入成功的dll，所以用这种方式还是要精心设计一下程序思路和限制条件。</p>
@@ -56,6 +41,21 @@
 ]]></content>
       <tags>
         <tag>Dll_Inject</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux下send错误代码32</title>
+    <url>/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/</url>
+    <content><![CDATA[<h3 id="问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken-pipe，即管道破裂。"><a href="#问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken-pipe，即管道破裂。" class="headerlink" title="问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken pipe，即管道破裂。"></a>问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken pipe，即管道破裂。</h3><p>问题形成原因：后来通过排查研究，发现出现该种问题出现的可能性为以下两种：</p>
+<p>1.socket失败，与服务器端的链接没有成功，从而管道破裂。</p>
+<p>2.服务端将客户端的socket断开，一样造成这样的问题。</p>
+<h3 id="此时这样的程序收到broken-pipe的信号，会自动退出我们可以在产生信号前利用方法-signal-int-signum-sighandler-t-handler-设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息-就是我们经常遇到的问题-。我们可以调用系统的处理方法，也可以自定义处理方法。"><a href="#此时这样的程序收到broken-pipe的信号，会自动退出我们可以在产生信号前利用方法-signal-int-signum-sighandler-t-handler-设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息-就是我们经常遇到的问题-。我们可以调用系统的处理方法，也可以自定义处理方法。" class="headerlink" title="此时这样的程序收到broken pipe的信号，会自动退出我们可以在产生信号前利用方法 signal(int signum, sighandler_t handler) 设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息(就是我们经常遇到的问题)。我们可以调用系统的处理方法，也可以自定义处理方法。"></a>此时这样的程序收到broken pipe的信号，会自动退出我们可以在产生信号前利用方法 signal(int signum, sighandler_t handler) 设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息(就是我们经常遇到的问题)。我们可以调用系统的处理方法，也可以自定义处理方法。</h3><p>对一个已经收到FIN包的socket调用read方法, 如果接收缓冲已空, 则返回0,<br>这就是常说的表示连接关闭. 但第一次对其调用write方法时, 如果发送缓冲没问题,<br>会返回正确写入(发送). 但发送的报文会导致对端发送RST报文,<br>因为对端的socket已经调用了close, 完全关闭, 既不发送, 也不接收数据. 所以,<br>第二次调用write方法(假设在收到RST之后), 会生成SIGPIPE信号, 导致进程退出.</p>
+<h3 id="为了避免进程退出-可以捕获SIGPIPE信号-或者忽略它"><a href="#为了避免进程退出-可以捕获SIGPIPE信号-或者忽略它" class="headerlink" title="为了避免进程退出, 可以捕获SIGPIPE信号, 或者忽略它,"></a>为了避免进程退出, 可以捕获SIGPIPE信号, 或者忽略它,</h3><p>给它设置SIG_IGN信号处理函数:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">signal(SIGPIPE, SIG_IGN);</span><br></pre></td></tr></table></figure>
+<p>这样, 第二次调用write方法时, 会返回-1, 同时errno置为SIGPIPE.<br>程序便能知道对端已经关闭.</p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
