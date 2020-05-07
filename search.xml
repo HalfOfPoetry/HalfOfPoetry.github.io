@@ -22,6 +22,21 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux下send错误代码32</title>
+    <url>/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/</url>
+    <content><![CDATA[<h3 id="问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken-pipe，即管道破裂。"><a href="#问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken-pipe，即管道破裂。" class="headerlink" title="问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken pipe，即管道破裂。"></a>问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken pipe，即管道破裂。</h3><p>问题形成原因：后来通过排查研究，发现出现该种问题出现的可能性为以下两种：</p>
+<p>1.socket失败，与服务器端的链接没有成功，从而管道破裂。</p>
+<p>2.服务端将客户端的socket断开，一样造成这样的问题。</p>
+<h3 id="此时这样的程序收到broken-pipe的信号，会自动退出我们可以在产生信号前利用方法-signal-int-signum-sighandler-t-handler-设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息-就是我们经常遇到的问题-。我们可以调用系统的处理方法，也可以自定义处理方法。"><a href="#此时这样的程序收到broken-pipe的信号，会自动退出我们可以在产生信号前利用方法-signal-int-signum-sighandler-t-handler-设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息-就是我们经常遇到的问题-。我们可以调用系统的处理方法，也可以自定义处理方法。" class="headerlink" title="此时这样的程序收到broken pipe的信号，会自动退出我们可以在产生信号前利用方法 signal(int signum, sighandler_t handler) 设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息(就是我们经常遇到的问题)。我们可以调用系统的处理方法，也可以自定义处理方法。"></a>此时这样的程序收到broken pipe的信号，会自动退出我们可以在产生信号前利用方法 signal(int signum, sighandler_t handler) 设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息(就是我们经常遇到的问题)。我们可以调用系统的处理方法，也可以自定义处理方法。</h3><p>对一个已经收到FIN包的socket调用read方法, 如果接收缓冲已空, 则返回0,<br>这就是常说的表示连接关闭. 但第一次对其调用write方法时, 如果发送缓冲没问题,<br>会返回正确写入(发送). 但发送的报文会导致对端发送RST报文,<br>因为对端的socket已经调用了close, 完全关闭, 既不发送, 也不接收数据. 所以,<br>第二次调用write方法(假设在收到RST之后), 会生成SIGPIPE信号, 导致进程退出.</p>
+<h3 id="为了避免进程退出-可以捕获SIGPIPE信号-或者忽略它"><a href="#为了避免进程退出-可以捕获SIGPIPE信号-或者忽略它" class="headerlink" title="为了避免进程退出, 可以捕获SIGPIPE信号, 或者忽略它,"></a>为了避免进程退出, 可以捕获SIGPIPE信号, 或者忽略它,</h3><p>给它设置SIG_IGN信号处理函数:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">signal(SIGPIPE, SIG_IGN);</span><br></pre></td></tr></table></figure>
+<p>这样, 第二次调用write方法时, 会返回-1, 同时errno置为SIGPIPE.<br>程序便能知道对端已经关闭.</p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【AI记录】机器学习与深度学习</title>
     <url>/2020/04/30/Deep-Learning/</url>
     <content><![CDATA[<h3 id="今天来讲讲机器学习-Machine-Learning，ML-与深度学习（Deep-Learning，DL）"><a href="#今天来讲讲机器学习-Machine-Learning，ML-与深度学习（Deep-Learning，DL）" class="headerlink" title="今天来讲讲机器学习(Machine Learning，ML)与深度学习（Deep Learning，DL）"></a>今天来讲讲机器学习(Machine Learning，ML)与深度学习（Deep Learning，DL）</h3><p>首先，要论这两个东西，得先了解人工智能（AI），AI与机器学习以及深度学习之间的关系，用集合关系来描述，就是：</p>
@@ -44,18 +59,13 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux下send错误代码32</title>
-    <url>/2020/04/30/Linux%E4%B8%8Bsend%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%8132/</url>
-    <content><![CDATA[<h3 id="问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken-pipe，即管道破裂。"><a href="#问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken-pipe，即管道破裂。" class="headerlink" title="问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken pipe，即管道破裂。"></a>问题描述：今天写程序，socket后send出现这个问题，send的返回值为-1，而errno为32，这个错误代码为broken pipe，即管道破裂。</h3><p>问题形成原因：后来通过排查研究，发现出现该种问题出现的可能性为以下两种：</p>
-<p>1.socket失败，与服务器端的链接没有成功，从而管道破裂。</p>
-<p>2.服务端将客户端的socket断开，一样造成这样的问题。</p>
-<h3 id="此时这样的程序收到broken-pipe的信号，会自动退出我们可以在产生信号前利用方法-signal-int-signum-sighandler-t-handler-设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息-就是我们经常遇到的问题-。我们可以调用系统的处理方法，也可以自定义处理方法。"><a href="#此时这样的程序收到broken-pipe的信号，会自动退出我们可以在产生信号前利用方法-signal-int-signum-sighandler-t-handler-设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息-就是我们经常遇到的问题-。我们可以调用系统的处理方法，也可以自定义处理方法。" class="headerlink" title="此时这样的程序收到broken pipe的信号，会自动退出我们可以在产生信号前利用方法 signal(int signum, sighandler_t handler) 设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息(就是我们经常遇到的问题)。我们可以调用系统的处理方法，也可以自定义处理方法。"></a>此时这样的程序收到broken pipe的信号，会自动退出我们可以在产生信号前利用方法 signal(int signum, sighandler_t handler) 设置信号的处理。如果没有调用此方法，系统就会调用默认处理方法：中止程序，显示提示信息(就是我们经常遇到的问题)。我们可以调用系统的处理方法，也可以自定义处理方法。</h3><p>对一个已经收到FIN包的socket调用read方法, 如果接收缓冲已空, 则返回0,<br>这就是常说的表示连接关闭. 但第一次对其调用write方法时, 如果发送缓冲没问题,<br>会返回正确写入(发送). 但发送的报文会导致对端发送RST报文,<br>因为对端的socket已经调用了close, 完全关闭, 既不发送, 也不接收数据. 所以,<br>第二次调用write方法(假设在收到RST之后), 会生成SIGPIPE信号, 导致进程退出.</p>
-<h3 id="为了避免进程退出-可以捕获SIGPIPE信号-或者忽略它"><a href="#为了避免进程退出-可以捕获SIGPIPE信号-或者忽略它" class="headerlink" title="为了避免进程退出, 可以捕获SIGPIPE信号, 或者忽略它,"></a>为了避免进程退出, 可以捕获SIGPIPE信号, 或者忽略它,</h3><p>给它设置SIG_IGN信号处理函数:</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">signal(SIGPIPE, SIG_IGN);</span><br></pre></td></tr></table></figure>
-<p>这样, 第二次调用write方法时, 会返回-1, 同时errno置为SIGPIPE.<br>程序便能知道对端已经关闭.</p>
+    <title>Welcome</title>
+    <url>/2020/04/30/Welcome/</url>
+    <content><![CDATA[<h2 id="这是开始"><a href="#这是开始" class="headerlink" title="这是开始"></a>这是开始</h2><p>欢迎来到这里<br>我会在这里<br>分享日常<br>分享代码<br>分享生活  </p>
+<p>ありがとうございます</p>
 ]]></content>
       <tags>
-        <tag>Linux</tag>
+        <tag>welcome</tag>
       </tags>
   </entry>
   <entry>
@@ -75,13 +85,24 @@
       </tags>
   </entry>
   <entry>
-    <title>Welcome</title>
-    <url>/2020/04/30/Welcome/</url>
-    <content><![CDATA[<h2 id="这是开始"><a href="#这是开始" class="headerlink" title="这是开始"></a>这是开始</h2><p>欢迎来到这里<br>我会在这里<br>分享日常<br>分享代码<br>分享生活  </p>
-<p>ありがとうございます</p>
+    <title>python猜数字小游戏</title>
+    <url>/2020/04/30/python%E7%8C%9C%E6%95%B0%E5%AD%97/</url>
+    <content><![CDATA[<h3 id="这是一个学习项目"><a href="#这是一个学习项目" class="headerlink" title="这是一个学习项目"></a>这是一个学习项目</h3><p>游戏原理介绍：</p>
+<p>这个猜数字的小游戏，相信很多人以前玩过，就是一个人从1-100中随机写一个数字，然后另外一群人去猜，猜一个数字的时候，就会告诉你所猜的数字大了还是小了，渐渐缩小范围，直到最后猜对的人，为最后的胜利者。</p>
+<p>现在把生成数字和裁判的角色，交给代码，这样即使只有自己一个人的时候，也可以玩这样的游戏</p>
+<p>经过上述游戏分析，我们就可以开始一套简单的思路</p>
+<p>1.随机数的生成，我们就得需要用到random模块</p>
+<p>2.猜数字的次数为多次，所以我们需要封装一个猜数字的函数</p>
+<p>3.需要记录猜数字的区间范围</p>
+<p>4.得防止用户使用不得当，输入字符不符导致程序异常</p>
+<p>5.游戏过程中玩家终止游戏操作</p>
+<h3 id="于是，我们可以根据思路简单编写一下代码："><a href="#于是，我们可以根据思路简单编写一下代码：" class="headerlink" title="于是，我们可以根据思路简单编写一下代码："></a>于是，我们可以根据思路简单编写一下代码：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">n = random.randint(<span class="number">1</span>,<span class="number">100</span>) <span class="comment"># 生成1 - 100的随机整</span></span><br><span class="line"></span><br><span class="line">step = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">low = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">high = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_number</span><span class="params">(low = <span class="number">1</span>,high = <span class="number">100</span>)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"></span><br><span class="line">        print(<span class="string">"Please enter an integer"</span>,low,<span class="string">"to"</span>,high,<span class="string">":"</span>)</span><br><span class="line"></span><br><span class="line">        guess = input()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> guess.isdigit():<span class="comment"># 字符串是否为数字，是True，否False</span></span><br><span class="line"></span><br><span class="line">            guess = int(guess)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> guess</span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">print(<span class="string">"Game Init"</span>)</span><br><span class="line"></span><br><span class="line">guess = get_number()</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"></span><br><span class="line">    step += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">"step :"</span>,step)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> guess == <span class="number">0</span>:</span><br><span class="line"></span><br><span class="line">        print(<span class="string">"quit"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> guess &lt; n:</span><br><span class="line"></span><br><span class="line">        print(guess,<span class="string">"is low"</span>)</span><br><span class="line"></span><br><span class="line">        low = guess + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> guess &gt; n:</span><br><span class="line"></span><br><span class="line">        print(guess,<span class="string">"is high"</span>)</span><br><span class="line"></span><br><span class="line">        high = guess - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line">        print(<span class="string">"you win!"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    guess = get_number(low,high) <span class="comment"># 继续猜</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">print(<span class="string">"Game Over"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="执行结果如下："><a href="#执行结果如下：" class="headerlink" title="执行结果如下："></a>执行结果如下：</h3><p><img src="https://img-blog.csdnimg.cn/20200323150728216.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNjc2ODc=,size_16,color_FFFFFF,t_70" alt="图片"></p>
+<p>简单易学，轻松上手</p>
+<p>可以根据自己对游戏的理解和需求，封装更多有趣的玩法</p>
 ]]></content>
       <tags>
-        <tag>welcome</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -105,27 +126,6 @@
 <p>content中有即是我们要的查询结果。</p>
 <h3 id="截图运行效果如下（截图附代码）："><a href="#截图运行效果如下（截图附代码）：" class="headerlink" title="截图运行效果如下（截图附代码）："></a>截图运行效果如下（截图附代码）：</h3><p><img src="https://img-blog.csdnimg.cn/202003061727026.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNjc2ODc=,size_16,color_FFFFFF,t_70" alt="pic6"><br>后面的格式如何转换，就是进一步的事了，这简单的百度小词典就完成啦~</p>
 <p>PS：利用这种方式，可以实现很多借用第三方的功能。</p>
-]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>python猜数字小游戏</title>
-    <url>/2020/04/30/python%E7%8C%9C%E6%95%B0%E5%AD%97/</url>
-    <content><![CDATA[<h3 id="这是一个学习项目"><a href="#这是一个学习项目" class="headerlink" title="这是一个学习项目"></a>这是一个学习项目</h3><p>游戏原理介绍：</p>
-<p>这个猜数字的小游戏，相信很多人以前玩过，就是一个人从1-100中随机写一个数字，然后另外一群人去猜，猜一个数字的时候，就会告诉你所猜的数字大了还是小了，渐渐缩小范围，直到最后猜对的人，为最后的胜利者。</p>
-<p>现在把生成数字和裁判的角色，交给代码，这样即使只有自己一个人的时候，也可以玩这样的游戏</p>
-<p>经过上述游戏分析，我们就可以开始一套简单的思路</p>
-<p>1.随机数的生成，我们就得需要用到random模块</p>
-<p>2.猜数字的次数为多次，所以我们需要封装一个猜数字的函数</p>
-<p>3.需要记录猜数字的区间范围</p>
-<p>4.得防止用户使用不得当，输入字符不符导致程序异常</p>
-<p>5.游戏过程中玩家终止游戏操作</p>
-<h3 id="于是，我们可以根据思路简单编写一下代码："><a href="#于是，我们可以根据思路简单编写一下代码：" class="headerlink" title="于是，我们可以根据思路简单编写一下代码："></a>于是，我们可以根据思路简单编写一下代码：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">n = random.randint(<span class="number">1</span>,<span class="number">100</span>) <span class="comment"># 生成1 - 100的随机整</span></span><br><span class="line"></span><br><span class="line">step = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">low = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">high = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_number</span><span class="params">(low = <span class="number">1</span>,high = <span class="number">100</span>)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"></span><br><span class="line">        print(<span class="string">"Please enter an integer"</span>,low,<span class="string">"to"</span>,high,<span class="string">":"</span>)</span><br><span class="line"></span><br><span class="line">        guess = input()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> guess.isdigit():<span class="comment"># 字符串是否为数字，是True，否False</span></span><br><span class="line"></span><br><span class="line">            guess = int(guess)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> guess</span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">print(<span class="string">"Game Init"</span>)</span><br><span class="line"></span><br><span class="line">guess = get_number()</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"></span><br><span class="line">    step += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">"step :"</span>,step)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> guess == <span class="number">0</span>:</span><br><span class="line"></span><br><span class="line">        print(<span class="string">"quit"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> guess &lt; n:</span><br><span class="line"></span><br><span class="line">        print(guess,<span class="string">"is low"</span>)</span><br><span class="line"></span><br><span class="line">        low = guess + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">elif</span> guess &gt; n:</span><br><span class="line"></span><br><span class="line">        print(guess,<span class="string">"is high"</span>)</span><br><span class="line"></span><br><span class="line">        high = guess - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line">        print(<span class="string">"you win!"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    guess = get_number(low,high) <span class="comment"># 继续猜</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">print(<span class="string">"Game Over"</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="执行结果如下："><a href="#执行结果如下：" class="headerlink" title="执行结果如下："></a>执行结果如下：</h3><p><img src="https://img-blog.csdnimg.cn/20200323150728216.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNjc2ODc=,size_16,color_FFFFFF,t_70" alt="图片"></p>
-<p>简单易学，轻松上手</p>
-<p>可以根据自己对游戏的理解和需求，封装更多有趣的玩法</p>
 ]]></content>
       <tags>
         <tag>python</tag>
