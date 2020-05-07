@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://halfofpoetry.github.io/"/>
-  <updated>2020-05-07T05:01:00.407Z</updated>
+  <updated>2020-05-07T08:33:51.571Z</updated>
   <id>http://halfofpoetry.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于MNist数据集进行DeepLearning学习</title>
+    <link href="http://halfofpoetry.github.io/2020/05/07/%E5%9F%BA%E4%BA%8EMNist%E6%95%B0%E6%8D%AE%E9%9B%86%E8%BF%9B%E8%A1%8CDeepLearning%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://halfofpoetry.github.io/2020/05/07/%E5%9F%BA%E4%BA%8EMNist%E6%95%B0%E6%8D%AE%E9%9B%86%E8%BF%9B%E8%A1%8CDeepLearning%E5%AD%A6%E4%B9%A0/</id>
+    <published>2020-05-07T06:24:40.000Z</published>
+    <updated>2020-05-07T08:33:51.571Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;什么是MNist&quot;&gt;&lt;a href=&quot;#什么是MNist&quot; class=&quot;headerlink&quot; title=&quot;什么是MNist&quot;&gt;&lt;/a&gt;什么是MNist&lt;/h3&gt;&lt;p&gt;MNist手写数据集，大多数示例使用手写数字的MNIST数据集[1]。该数据集包含60000
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Deep-Learning" scheme="http://halfofpoetry.github.io/tags/Deep-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>Arm板Linux移植随身WIFI</title>

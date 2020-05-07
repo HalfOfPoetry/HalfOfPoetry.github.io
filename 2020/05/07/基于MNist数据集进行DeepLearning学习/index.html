@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/function%20small()%20%7B%20%5Bnative%20code%5D%20%7D?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Deep-Learning," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="半句唐诗的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="什么是MNistMNist手写数据集，大多数示例使用手写数字的MNIST数据集[1]。该数据集包含60000个用于训练的示例和10,000个用于测试的示例。这些数字已经过尺寸标准化并位于图像中心，图像是固定大小(28x28像素)，其值为0到1。为简单起见，每个图像都被平展并转换为784(28 * 28)个特征的一维numpy数组。大概是这样：我们可以通过pip或者离线安装方式加载该数据集在这里，我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于MNist数据集进行DeepLearning学习">
+<meta property="og:url" content="http://halfofpoetry.github.io/2020/05/07/%E5%9F%BA%E4%BA%8EMNist%E6%95%B0%E6%8D%AE%E9%9B%86%E8%BF%9B%E8%A1%8CDeepLearning%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="半句唐诗的博客">
+<meta property="og:description" content="什么是MNistMNist手写数据集，大多数示例使用手写数字的MNIST数据集[1]。该数据集包含60000个用于训练的示例和10,000个用于测试的示例。这些数字已经过尺寸标准化并位于图像中心，图像是固定大小(28x28像素)，其值为0到1。为简单起见，每个图像都被平展并转换为784(28 * 28)个特征的一维numpy数组。大概是这样：我们可以通过pip或者离线安装方式加载该数据集在这里，我">
+<meta property="og:image" content="http://q9lfq1grf.bkt.clouddn.com/mnist.jpeg">
+<meta property="og:image" content="http://q9lfq1grf.bkt.clouddn.com/mnist_visio.jpg">
+<meta property="og:image" content="http://q9lfq1grf.bkt.clouddn.com/v2-05bafbc0557270f96773e544b2ae683e_hd.webp">
+<meta property="og:image" content="http://q9lfq1grf.bkt.clouddn.com/MNist_res.png">
+<meta property="og:image" content="http://q9lfq1grf.bkt.clouddn.com/MNist_model_res.png">
+<meta property="article:published_time" content="2020-05-07T06:24:40.000Z">
+<meta property="article:modified_time" content="2020-05-07T08:33:51.571Z">
+<meta property="article:author" content="半句唐诗">
+<meta property="article:tag" content="Deep-Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://q9lfq1grf.bkt.clouddn.com/mnist.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://halfofpoetry.github.io/2020/05/07/基于MNist数据集进行DeepLearning学习/"/>
+
+
+
+
+
+  <title>基于MNist数据集进行DeepLearning学习 | 半句唐诗的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">半句唐诗的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Keep Thinking</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="https://weibo.com/onebadboy/" target="_blank" rel="section noopener">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://halfofpoetry.github.io/2020/05/07/%E5%9F%BA%E4%BA%8EMNist%E6%95%B0%E6%8D%AE%E9%9B%86%E8%BF%9B%E8%A1%8CDeepLearning%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="半句唐诗">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://q9lfq1grf.bkt.clouddn.com/libai.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="半句唐诗的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于MNist数据集进行DeepLearning学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-07T14:24:40+08:00">
+                2020-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是MNist"><a href="#什么是MNist" class="headerlink" title="什么是MNist"></a>什么是MNist</h3><p>MNist手写数据集，大多数示例使用手写数字的MNIST数据集[1]。该数据集包含60000个用于训练的示例和10,000个用于测试的示例。这些数字已经过尺寸标准化并位于图像中心，图像是固定大小(28x28像素)，其值为0到1。<br>为简单起见，每个图像都被平展并转换为784(28 * 28)个特征的一维numpy数组。<br>大概是这样：<br><img src="http://q9lfq1grf.bkt.clouddn.com/mnist.jpeg" alt="pic"><br>我们可以通过pip或者离线安装方式加载该数据集<br>在这里，我是直接用TensorFlow2了，很多操作都相对方便，本文的代码也是基于TensorFlow2的</p>
+<p>为什么会用到这个数据集？<br>以我看来，学会训练这个数据集，不仅可以用来识别日常中的手写数字，这个简直就是深度学习中的Hello world，学了这个，可以说进入了深度学习的ABC了</p>
+<h3 id="调用流程"><a href="#调用流程" class="headerlink" title="调用流程"></a>调用流程</h3><p>文字描述比较麻烦，我做了一张流程图直接看：<br><img src="http://q9lfq1grf.bkt.clouddn.com/mnist_visio.jpg" alt="pic2"></p>
+<h3 id="流程解析"><a href="#流程解析" class="headerlink" title="流程解析"></a>流程解析</h3><p>在开发流程中，我们需要将数据集，分解成训练集和测试集，（有时候还有验证集）<br>顾名思义，训练集就是投入到训练过程中，将训练出一套模型后，用测试集的数据进行校验，来测算准确率。<br>由于数据集中是简单的数据集，文字识别类的，每个像素可以视为非黑即白，所以，我们可以对每个像素点，进行</p>
+<h4 id="归一化操作"><a href="#归一化操作" class="headerlink" title="归一化操作"></a>归一化操作</h4><p>什么是归一化操作？就是把目标值全部转化为1，非目标值转化成0，这样我们就可以把数据集中的每组numpy数据的每个像素点，都识别为0或者1，来降低训练难度,可以理解成以下样子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 归一化操作</span></span><br><span class="line">x_train,x_test = x_train / <span class="number">255.0</span>,x_test / <span class="number">255.0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">000010001...</span><br><span class="line">000100010...</span><br><span class="line">000101001...</span><br><span class="line">000100010...</span><br><span class="line">000100010...</span><br><span class="line">............</span><br></pre></td></tr></table></figure>
+<p>同样的，为方便标签的识别，我们可以进行</p>
+<h4 id="把标签转独热编码"><a href="#把标签转独热编码" class="headerlink" title="把标签转独热编码"></a>把标签转独热编码</h4><p>何为独热编码？<br>独热编码即 One-Hot 编码,又称一位有效编码,其方法是使用N位状态寄存器来对N个状态进行编码,每个状态都由他独立的寄存器位,并且在任意时候,其中只有一位有效。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把标签转成独热编码</span></span><br><span class="line">y_train = tf.keras.utils.to_categorical(y_train,num_classes=<span class="number">10</span>)</span><br><span class="line">y_test = tf.keras.utils.to_categorical(y_test,num_classes=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>我们在这里拿MNist数据集举例，0-9有十位数字，所以独热编码位有10位，我们就可以把1独热为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0100000000]</span><br></pre></td></tr></table></figure>
+<p>把3独热为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[0001000000]</span><br></pre></td></tr></table></figure>
+<p>这样看，就清晰了很多</p>
+<h4 id="构建Dataset对象和模型的过程中"><a href="#构建Dataset对象和模型的过程中" class="headerlink" title="构建Dataset对象和模型的过程中"></a>构建Dataset对象和模型的过程中</h4><p>我们需要用repeat和batch分别对训练集和测试集配置训练周期和批次大小（一次训练多少个数据）<br>这里我们要有一个认知，我们在拥有测试集的时候，我们后续要用测试集进行验证，我们就得对测试集做与训练集配置相同的操作，这样可以计算统计出最终的准确率，当然如果你连测试集都没有，那就无需多言<br>构建模型的时候，我们这里采用keras自带的模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构建模型</span></span><br><span class="line">model = keras.models.Sequential([</span><br><span class="line">    keras.layers.Flatten(input_shape=(<span class="number">28</span>,<span class="number">28</span>)), <span class="comment"># 数据扁平化 784 个数值</span></span><br><span class="line">    keras.layers.Dense(<span class="number">10</span>,activation=<span class="string">'softmax'</span>) <span class="comment"># 激活函数为softmax输出为10个神经元的全连接</span></span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<p>因为我们输入的每张图片的numpy值为28*28像素，所以前面的归一化操作出来的数据也是28*28，所以输入的神经元个数即：input_shape=(28,28)，通过Flatten进行数据扁平化成784个数值<br>之后我们定义其为输出位10个神经元的全连接层</p>
+<h4 id="关于优化器"><a href="#关于优化器" class="headerlink" title="关于优化器"></a>关于优化器</h4><p>什么是优化器？<br>在机器学习中，有很多优化方法来试图寻找模型的最优解。比如神经网络中可以采取最基本的梯度下降法。<br>梯度下降法是最基本的一类优化器，目前主要分为三种梯度下降法：标准梯度下降法(GD, Gradient Descent)，随机梯度下降法(SGD, Stochastic Gradient Descent)及批量梯度下降法(BGD, Batch Gradient Descent)。<br>在这里我们采用随机梯度下降法，关于这一个知识点，后续可能会出一个专门解读，或者大家可以去百度一下，先进行自我学习。<br>以下是几种梯度下降法寻找最低值的立体三维解析：<br><img src="http://q9lfq1grf.bkt.clouddn.com/v2-05bafbc0557270f96773e544b2ae683e_hd.webp" alt="pic3"><br>后续博文会慢慢解释，大家先看着了解一二，或者百度学习更深的算法，咱们一起探讨学习。</p>
+<h4 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 训练模型</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_step</span><span class="params">(data,label)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> tape:</span><br><span class="line">        <span class="comment"># 传入数据预测结果</span></span><br><span class="line">        predictions = model(data)</span><br><span class="line">        <span class="comment"># 计算loss</span></span><br><span class="line">        loss = tf.keras.losses.MSE(label,predictions) <span class="comment"># 二次代价函数</span></span><br><span class="line">        <span class="comment"># 计算权值调整</span></span><br><span class="line">        gradients = tape.gradient(loss,model.trainable_variables)</span><br><span class="line">        <span class="comment"># 进行权值调整</span></span><br><span class="line">        optimizer.apply_gradients(zip(gradients,model.trainable_variables))</span><br><span class="line">        <span class="comment"># 计算平均loss</span></span><br><span class="line">        train_loss(loss)</span><br><span class="line">        <span class="comment"># 计算平均准确率</span></span><br><span class="line">        train_accuracy(label,predictions)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模型测试</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_step</span><span class="params">(data,label)</span>:</span></span><br><span class="line">    <span class="comment"># 传入数据预测结果</span></span><br><span class="line">    predictions = model(data)</span><br><span class="line">    <span class="comment"># 计算loss </span></span><br><span class="line">    t_loss = tf.keras.losses.MSE(label,predictions)</span><br><span class="line">    <span class="comment"># 计算平均loss</span></span><br><span class="line">    test_loss(t_loss)</span><br><span class="line">    <span class="comment"># 计算平均准确率</span></span><br><span class="line">    test_accuracy(label,predictions)</span><br></pre></td></tr></table></figure>
+<p>以上是两个函数的定义，重点要注意的是我们这里采用均方差损失函数（即二次代价函数）来计算误差，从而进一步调整权值，计算训练过程中的模型准确率<br>除了二次代价函数外，还有交叉熵损失函数，大家有兴趣后续可以使用交叉熵的方式，来计算误差，而后对比结果关系。<br>我个人用的环境是vscode+anaconda（配置python3.6—64）<br>我的运行结果如下：<br><img src="http://q9lfq1grf.bkt.clouddn.com/MNist_res.png" alt="pic4"><br>可以看到<br>1.由于我使用的CPU版本的TensorFlow来训练，所以训练速度相对比较久，所以有条件有显卡的童鞋，建议使用GPU版本，速度不是提升一点点<br>2.在训练过程中，训练集的准确率和测试集的准确率都有提高的趋势，这都归功于我们前面配置的优化器，以及每个训练过程中权值调整,我推荐大家去修改这些值，或者屏蔽这些值，来进一步了解这些带来的变化。</p>
+<h3 id="模型的保存"><a href="#模型的保存" class="headerlink" title="模型的保存"></a>模型的保存</h3><p>模型的保存有很多种方式，我们这里采用Checkpoint的方式，保存最优三个模型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义模型保存</span></span><br><span class="line">ckpt = tf.train.Checkpoint(step=tf.Variable(<span class="number">1</span>), <span class="comment"># 训练的次数从1开始</span></span><br><span class="line">    optimizer=optimizer,model=model)</span><br><span class="line">manager = tf.train.CheckpointManager(ckpt,<span class="string">'tf2_ckpts'</span>,max_to_keep=<span class="number">3</span>) <span class="comment"># 文件夹中最多保存3个模型</span></span><br></pre></td></tr></table></figure>
+<p>之后在每个训练周期进行save()模型保存即可<br>模型的载入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模型载入</span></span><br><span class="line">ckpt = tf.train.Checkpoint(step=tf.Variable(<span class="number">1</span>),optimizer=optimizer,model=model)</span><br><span class="line">ckpt.retore(tf.train.latest_checkpoint(<span class="string">'tf2_ckpts/'</span>)) <span class="comment"># 在文件夹中取出最新的模型</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://q9lfq1grf.bkt.clouddn.com/MNist_model_res.png" alt="pic5"></p>
+<h3 id="写一个demo"><a href="#写一个demo" class="headerlink" title="写一个demo"></a>写一个demo</h3><p>写一个demo来试试结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf </span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.optimizers <span class="keyword">import</span> SGD</span><br><span class="line"><span class="keyword">from</span> tensorflow <span class="keyword">import</span> keras</span><br><span class="line"></span><br><span class="line"><span class="comment"># 载入数据集</span></span><br><span class="line">mnist = keras.datasets.mnist</span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练集和测试集</span></span><br><span class="line">(x_train,y_train),(x_test,y_test) = mnist.load_data()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化操作</span></span><br><span class="line">x_train,x_test = x_train / <span class="number">255.0</span>,x_test / <span class="number">255.0</span></span><br><span class="line">print(x_train.shape,x_test.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把标签转成独热编码</span></span><br><span class="line">y_train = tf.keras.utils.to_categorical(y_train,num_classes=<span class="number">10</span>)</span><br><span class="line">y_test = tf.keras.utils.to_categorical(y_test,num_classes=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建dataset对象</span></span><br><span class="line">mnist_train = tf.data.Dataset.from_tensor_slices((x_train,y_train))</span><br><span class="line"><span class="comment"># 训练周期</span></span><br><span class="line">mnist_train = mnist_train.repeat(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 批次大小 一次32个数据</span></span><br><span class="line">mnist_train = mnist_train.batch(<span class="number">32</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建detaset对象</span></span><br><span class="line">mnist_test = tf.data.Dataset.from_tensor_slices((x_test,y_test))</span><br><span class="line"><span class="comment"># 训练周期</span></span><br><span class="line">mnist_test = mnist_test.repeat(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 批次大小</span></span><br><span class="line">mnist_test = mnist_test.batch(<span class="number">32</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建模型</span></span><br><span class="line">model = keras.models.Sequential([</span><br><span class="line">    keras.layers.Flatten(input_shape=(<span class="number">28</span>,<span class="number">28</span>)), <span class="comment"># 数据扁平化 784 个数值</span></span><br><span class="line">    keras.layers.Dense(<span class="number">10</span>,activation=<span class="string">'softmax'</span>) <span class="comment"># 激活函数为softmax输出为10个神经元的全连接</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 优化器定义</span></span><br><span class="line">optimizer = tf.keras.optimizers.SGD(<span class="number">0.1</span>)</span><br><span class="line"><span class="comment"># 训练loss</span></span><br><span class="line">train_loss = tf.keras.metrics.Mean(name=<span class="string">'train_loss'</span>)</span><br><span class="line"><span class="comment"># 训练准确率计算</span></span><br><span class="line">train_accuracy = tf.keras.metrics.CategoricalAccuracy(name=<span class="string">'train_accuracy'</span>)</span><br><span class="line"><span class="comment"># 测试loss</span></span><br><span class="line">test_loss = tf.keras.metrics.Mean(name=<span class="string">"test_loss"</span>)</span><br><span class="line"><span class="comment"># 测试准确率计算</span></span><br><span class="line">test_accuracy = tf.keras.metrics.CategoricalAccuracy(name=<span class="string">"test_accuracy"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练模型</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_step</span><span class="params">(data,label)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> tape:</span><br><span class="line">        <span class="comment"># 传入数据预测结果</span></span><br><span class="line">        predictions = model(data)</span><br><span class="line">        <span class="comment"># 计算loss</span></span><br><span class="line">        loss = tf.keras.losses.MSE(label,predictions) <span class="comment"># 二次代价函数</span></span><br><span class="line">        <span class="comment"># 计算权值调整</span></span><br><span class="line">        gradients = tape.gradient(loss,model.trainable_variables)</span><br><span class="line">        <span class="comment"># 进行权值调整</span></span><br><span class="line">        optimizer.apply_gradients(zip(gradients,model.trainable_variables))</span><br><span class="line">        <span class="comment"># 计算平均loss</span></span><br><span class="line">        train_loss(loss)</span><br><span class="line">        <span class="comment"># 计算平均准确率</span></span><br><span class="line">        train_accuracy(label,predictions)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型测试</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_step</span><span class="params">(data,label)</span>:</span></span><br><span class="line">    <span class="comment"># 传入数据预测结果</span></span><br><span class="line">    predictions = model(data)</span><br><span class="line">    <span class="comment"># 计算loss </span></span><br><span class="line">    t_loss = tf.keras.losses.MSE(label,predictions)</span><br><span class="line">    <span class="comment"># 计算平均loss</span></span><br><span class="line">    test_loss(t_loss)</span><br><span class="line">    <span class="comment"># 计算平均准确率</span></span><br><span class="line">    test_accuracy(label,predictions)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义模型保存</span></span><br><span class="line">ckpt = tf.train.Checkpoint(step=tf.Variable(<span class="number">1</span>), <span class="comment"># 训练的次数从1开始</span></span><br><span class="line">    optimizer=optimizer,model=model)</span><br><span class="line">manager = tf.train.CheckpointManager(ckpt,<span class="string">'tf2_ckpts'</span>,max_to_keep=<span class="number">3</span>) <span class="comment"># 文件夹中最多保存3个模型</span></span><br><span class="line"></span><br><span class="line">EPOCHS = <span class="number">5</span></span><br><span class="line"><span class="comment"># 训练5个周期</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(EPOCHS):</span><br><span class="line">    <span class="comment"># 循环60000/32 = 1875次 一共有60000个数据，一次取32个数据</span></span><br><span class="line">    <span class="keyword">for</span> image,label <span class="keyword">in</span> mnist_train:</span><br><span class="line">        <span class="comment"># 训练模型</span></span><br><span class="line">        train_step(image,label)</span><br><span class="line">    <span class="comment"># 循环10000/32 = 312.5 ———&gt; 313次</span></span><br><span class="line">    <span class="keyword">for</span> test_image,test_label <span class="keyword">in</span> mnist_test:</span><br><span class="line">        <span class="comment"># 测试模式</span></span><br><span class="line">        test_step(test_image,test_label)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 打印结果</span></span><br><span class="line">    template = <span class="string">'Epoch &#123;&#125; ,loss: &#123;:.3&#125;, Accuracy &#123;:.3&#125;, Test Loss: &#123;:.3&#125;,Test Accuracy: &#123;:.3&#125;'</span></span><br><span class="line">    print(template.format(epoch + <span class="number">1</span>,</span><br><span class="line">                        train_loss.result(),</span><br><span class="line">                        train_accuracy.result(),</span><br><span class="line">                        test_loss.result(),</span><br><span class="line">                        test_accuracy.result()))</span><br><span class="line">    <span class="comment"># 保存模型</span></span><br><span class="line">    manager.save()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型载入</span></span><br><span class="line">ckpt = tf.train.Checkpoint(step=tf.Variable(<span class="number">1</span>),optimizer=optimizer,model=model)</span><br><span class="line">ckpt.retore(tf.train.latest_checkpoint(<span class="string">'tf2_ckpts/'</span>)) <span class="comment"># 在文件夹中取出最新的模型</span></span><br></pre></td></tr></table></figure>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>我也在学习阶段，这一篇是我近期学习所得，也只能说自己接触了这一块的深度学习的hello world了吧，后续继续学习更多的东西，和大家多做学习交流探讨。</p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+      
+        
+      
+    </div>
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    半句唐诗
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://halfofpoetry.github.io/2020/05/07/%E5%9F%BA%E4%BA%8EMNist%E6%95%B0%E6%8D%AE%E9%9B%86%E8%BF%9B%E8%A1%8CDeepLearning%E5%AD%A6%E4%B9%A0/" title="基于MNist数据集进行DeepLearning学习">http://halfofpoetry.github.io/2020/05/07/%E5%9F%BA%E4%BA%8EMNist%E6%95%B0%E6%8D%AE%E9%9B%86%E8%BF%9B%E8%A1%8CDeepLearning%E5%AD%A6%E4%B9%A0/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Deep-Learning/" rel="tag"># Deep-Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/07/Arm%E6%9D%BFLinux%E7%A7%BB%E6%A4%8D%E9%9A%8F%E8%BA%ABWIFI/" rel="next" title="Arm板Linux移植随身WIFI">
+                <i class="fa fa-chevron-left"></i> Arm板Linux移植随身WIFI
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81MDAwOC8yNjQ5OQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://q9lfq1grf.bkt.clouddn.com/libai.jpg"
+                alt="半句唐诗" />
+            
+              <p class="site-author-name" itemprop="name">半句唐诗</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:564841191@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/u013267687" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-csdn"></i>csdn</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是MNist"><span class="nav-number">1.</span> <span class="nav-text">什么是MNist</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用流程"><span class="nav-number">2.</span> <span class="nav-text">调用流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程解析"><span class="nav-number">3.</span> <span class="nav-text">流程解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#归一化操作"><span class="nav-number">3.1.</span> <span class="nav-text">归一化操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#把标签转独热编码"><span class="nav-number">3.2.</span> <span class="nav-text">把标签转独热编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构建Dataset对象和模型的过程中"><span class="nav-number">3.3.</span> <span class="nav-text">构建Dataset对象和模型的过程中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于优化器"><span class="nav-number">3.4.</span> <span class="nav-text">关于优化器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#训练模型"><span class="nav-number">3.5.</span> <span class="nav-text">训练模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型的保存"><span class="nav-number">4.</span> <span class="nav-text">模型的保存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写一个demo"><span class="nav-number">5.</span> <span class="nav-text">写一个demo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">6.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+      
+        <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+        <div class="widget-wrap">
+            <h3 class="widget-title">标签们</h3>
+            <div id="myCanvasContainer" class="widget tagcloud">
+                <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Arm-Linux/" rel="tag">Arm-Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learing/" rel="tag">Deep-Learing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Deep-Learning/" rel="tag">Deep-Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dll-Inject/" rel="tag">Dll_Inject</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/welcome/" rel="tag">welcome</a><span class="tag-list-count">1</span></li></ul>
+                </canvas>
+            </div>
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">半句唐诗</span>
+
+  
+</div>
+
+  
+
+
+  <div class="theme-info">
+    <span class="post-count">博客全站共7.1k字</span>
+  </div>
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
