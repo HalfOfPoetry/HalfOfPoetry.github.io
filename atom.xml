@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://halfofpoetry.github.io/"/>
-  <updated>2020-05-07T03:42:34.290Z</updated>
+  <updated>2020-05-07T05:01:00.407Z</updated>
   <id>http://halfofpoetry.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Arm板Linux移植随身WIFI</title>
+    <link href="http://halfofpoetry.github.io/2020/05/07/Arm%E6%9D%BFLinux%E7%A7%BB%E6%A4%8D%E9%9A%8F%E8%BA%ABWIFI/"/>
+    <id>http://halfofpoetry.github.io/2020/05/07/Arm%E6%9D%BFLinux%E7%A7%BB%E6%A4%8D%E9%9A%8F%E8%BA%ABWIFI/</id>
+    <published>2020-05-07T04:49:50.000Z</published>
+    <updated>2020-05-07T05:01:00.407Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Arm板Linux移植随身WIFI并连接上网络，如米WIFI&quot;&gt;&lt;a href=&quot;#Arm板Linux移植随身WIFI并连接上网络，如米WIFI&quot; class=&quot;headerlink&quot; title=&quot;Arm板Linux移植随身WIFI并连接上网络，如米WIFI&quot;&gt;
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Arm-Linux" scheme="http://halfofpoetry.github.io/tags/Arm-Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>DLL注入之注册表注入</title>

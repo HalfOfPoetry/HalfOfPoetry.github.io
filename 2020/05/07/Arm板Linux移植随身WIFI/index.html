@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Arm-Linux," />
 
 
 
@@ -82,12 +82,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="半句唐诗的博客">
-<meta property="og:url" content="http://halfofpoetry.github.io/archives/2020/05/index.html">
+<meta name="description" content="Arm板Linux移植随身WIFI并连接上网络，如米WIFI本文是本人博客的版本迁移，将叙述本人2015年Arm板linux系统上实现米wifi驱动的移植以及到连接上wifi的全过程，360wifi等类似，本文中会有提到 PS：交叉编译等本文不多做讲解 在执行之前，先确定你linux系统下armlinux系统的源码目录在哪里（Ps：我的源码目录为&#x2F;usr&#x2F;linux2.6.32.2） 首先得先获取">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arm板Linux移植随身WIFI">
+<meta property="og:url" content="http://halfofpoetry.github.io/2020/05/07/Arm%E6%9D%BFLinux%E7%A7%BB%E6%A4%8D%E9%9A%8F%E8%BA%ABWIFI/index.html">
 <meta property="og:site_name" content="半句唐诗的博客">
+<meta property="og:description" content="Arm板Linux移植随身WIFI并连接上网络，如米WIFI本文是本人博客的版本迁移，将叙述本人2015年Arm板linux系统上实现米wifi驱动的移植以及到连接上wifi的全过程，360wifi等类似，本文中会有提到 PS：交叉编译等本文不多做讲解 在执行之前，先确定你linux系统下armlinux系统的源码目录在哪里（Ps：我的源码目录为&#x2F;usr&#x2F;linux2.6.32.2） 首先得先获取">
+<meta property="og:image" content="https://img-blog.csdn.net/20150507134811131?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI2NzY4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="https://img-blog.csdn.net/20150507135609229?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI2NzY4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="article:published_time" content="2020-05-07T04:49:50.000Z">
+<meta property="article:modified_time" content="2020-05-07T05:01:00.407Z">
 <meta property="article:author" content="半句唐诗">
+<meta property="article:tag" content="Arm-Linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20150507134811131?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI2NzY4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 
 
 
@@ -117,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://halfofpoetry.github.io/archives/2020/05/"/>
+  <link rel="canonical" href="http://halfofpoetry.github.io/2020/05/07/Arm板Linux移植随身WIFI/"/>
 
 
 
 
 
-  <title>归档 | 半句唐诗的博客</title>
+  <title>Arm板Linux移植随身WIFI | 半句唐诗的博客</title>
   
 
 
@@ -142,7 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -260,148 +268,262 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://halfofpoetry.github.io/2020/05/07/Arm%E6%9D%BFLinux%E7%A7%BB%E6%A4%8D%E9%9A%8F%E8%BA%ABWIFI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="半句唐诗">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://q9lfq1grf.bkt.clouddn.com/libai.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="半句唐诗的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Arm板Linux移植随身WIFI</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-07T12:49:50+08:00">
+                2020-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 8 篇日志。 继续努力。
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2020">2020</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/05/07/Arm%E6%9D%BFLinux%E7%A7%BB%E6%A4%8D%E9%9A%8F%E8%BA%ABWIFI/" itemprop="url">
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">Arm板Linux移植随身WIFI</span>
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-05-07T12:49:50+08:00"
-              content="2020-05-07" >
-          05-07
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/05/07/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/" itemprop="url">
-              
-                <span itemprop="name">DLL注入之注册表注入</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-05-07T11:02:27+08:00"
-              content="2020-05-07" >
-          05-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
+      
+        <h3 id="Arm板Linux移植随身WIFI并连接上网络，如米WIFI"><a href="#Arm板Linux移植随身WIFI并连接上网络，如米WIFI" class="headerlink" title="Arm板Linux移植随身WIFI并连接上网络，如米WIFI"></a>Arm板Linux移植随身WIFI并连接上网络，如米WIFI</h3><p>本文是本人博客的版本迁移，将叙述本人2015年Arm板linux系统上实现米wifi驱动的移植以及到连接上wifi的全过程，360wifi等类似，本文中会有提到</p>
+<p>PS：交叉编译等本文不多做讲解</p>
+<p>在执行之前，先确定你linux系统下armlinux系统的源码目录在哪里（Ps：我的源码目录为/usr/linux2.6.32.2）</p>
+<h3 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h3><p>得先获取无线网卡驱动的源码，后，解压到linux系统上，（ps：这里我是解压在/usr目录下）</p>
+<p>以下为无线网卡驱动的源码下载地址，大家可以去下载：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;download.csdn.net&#x2F;detail&#x2F;u013267687&#x2F;8671849</span><br></pre></td></tr></table></figure>
+<h3 id="解压完后"><a href="#解压完后" class="headerlink" title="解压完后"></a>解压完后</h3><p>在WIFI驱动的源代码根目录下，执行gedit MakeFile，进行修改，修改内容如下：</p>
+<p>找到“PLATFORM = PC”语句将其注释掉，即修改为：“#PLATFORM = PC”</p>
+<p>找到“#PLATFORM = SMDK”语句将其注释的语句解除，即“PLATFORM = SMDK”</p>
+<p>修改完以上内容还需修改一处：</p>
+<p>找到“ifeq ($(PLATFORM),SMDK)”语句，将其后两句语句修改为如下内容：</p>
+<p>LINUX_SRC = /usr/linux-2.6.32.2 //注意，此处为你的源码目录<br>CROSS_COMPILE = arm-linux-</p>
+<p>修改完以上后，即可保存关闭该文件</p>
+<h3 id="后进入"><a href="#后进入" class="headerlink" title="后进入"></a>后进入</h3><p>/usr/DPO_MT7601U_LinuxSTA_3.0.0.4_20130913/common目录，执行</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gedit rtusb_dev_id.c”命令</span><br></pre></td></tr></table></figure>
 
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/05/07/Windows%E7%BC%96%E7%A8%8B%E4%B9%8BDLL%E6%B3%A8%E5%85%A5/" itemprop="url">
-              
-                <span itemprop="name">Windows编程之DLL注入</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-05-07T09:21:01+08:00"
-              content="2020-05-07" >
-          05-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+<p>修改该文件：<br>找到</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> MT7601U</span></span><br><span class="line">&#123;USB_DEVICE(<span class="number">0x148f</span>,<span class="number">0x6370</span>)&#125;, <span class="comment">/* Ralink 6370 */</span></span><br><span class="line">&#123;USB_DEVICE(<span class="number">0x148f</span>,<span class="number">0x7601</span>)&#125;, <span class="comment">/* MT 6370 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* MT7601U */</span>”</span></span><br><span class="line"></span><br><span class="line">在其中添加上“&#123;USB_DEVICE(<span class="number">0x2717</span>,<span class="number">0x4106</span>)&#125;,<span class="comment">/* XiaoMi wifi */</span>”</span><br></pre></td></tr></table></figure>
+<p>如图：<br><img src="https://img-blog.csdn.net/20150507134811131?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI2NzY4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="pic"></p>
+<p>这里要注意的是，如果你是其他的随身wifi设备的话，可以根据以下提示内容进行添加：</p>
+<p>{USB_DEVICE(0x148f,0x760b)},/* 360 Wifi 2 Gen */</p>
+<p>{USB_DEVICE(0x2955,0x1001)},/* Xiao Du Wifi */</p>
+<p>{USB_DEVICE(0x2a5f,0x1000)},/* Quan Min Wifi */</p>
+<h3 id="随后转到驱动源码根目录下执行，make指令"><a href="#随后转到驱动源码根目录下执行，make指令" class="headerlink" title="随后转到驱动源码根目录下执行，make指令"></a>随后转到驱动源码根目录下执行，make指令</h3><p>随后linux就会根据你刚刚修改的配置进行相应的编译，生成.ko文件</p>
+<p>路径在界面中可以找到，如图：<br><img src="https://img-blog.csdn.net/20150507135609229?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI2NzY4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="pic2"><br>随后我们到该目录下将“mt7601Usta.ko”文件拷贝到ARM板中</p>
+<p>但是在这操作过程中有一个很重要的点别漏了，否则无线网卡一样无法驱动成功</p>
+<p>需要做的是，将该驱动源码根目录下的“RT2870STA.dat”文件拷贝到板中的”/etc/Wireless/RT2870STA/“目录下。</p>
+<p>随后在Arm板的linux系统中安装刚刚编译好的驱动“insmod mt7601Usta.ko”，安装是否成功除了可以看提示外，还可以使用命令“lsmod”查看是否有安装该设备</p>
+<p>PS：这里安装失败的话，一般是内核版本的问题，请检查你的内核版本是否与你linux下的armlinux的内核版本是否一致，或者arm-linux-gcc的版本是否符合要求，该问题在这里不多做解决的讲解</p>
+<h3 id="安装成功后-即可插上相应的设备（随身WIFI）"><a href="#安装成功后-即可插上相应的设备（随身WIFI）" class="headerlink" title="安装成功后,即可插上相应的设备（随身WIFI）"></a>安装成功后,即可插上相应的设备（随身WIFI）</h3><p>不久，就会提示识别成功，出现一大段码，我就不贴出了</p>
+<p>做到这里，你已经成功的将随身wifi移植到你的ARM板上了，但是你会发现，重启之后，该设备驱动又不见了，这是由于arm板每次重启就会还原一次这些驱动设备，所以，你需要修改初始化文件：</p>
+<p>可以修改/etc/init.d目录下的rcS文件，在其中加入安装.ko文件的指令（PS：注意你的.ko文件的路径）<br>至此，已经驱动算是相对完整的成功了，也不担心重启还原的问题了，接下来，就讲解一下如何使用它来连接热点，即WIFI</p>
+<h3 id="以上内容完成后，可以使用"><a href="#以上内容完成后，可以使用" class="headerlink" title="以上内容完成后，可以使用"></a>以上内容完成后，可以使用</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig -a</span><br></pre></td></tr></table></figure>
+<p>就可以查看到你的无线网卡设备，即你的随身wifi，一般默认的设备名为“ra0”，默认是没有配置其他信息的，所以我们需要给它简单的配置一下，方便后期开发</p>
+<p>但是在使用之前需要将arm板上的集成网卡先关闭掉，一般默认的名字为“eth0”，但是在关闭之前，我们得先执行以下操作</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 192.168.1.xxx</span><br></pre></td></tr></table></figure>
+<p>xxx的取值为2-255，不要取230，或者身边已有的ip，因为，在同一网段上，不允许有两个相同的ip出现，而一般板上的初始ip为230， 所以要避开这些点，方便后期开发（PS：此处为建议）</p>
+<p>之后关闭该网卡</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 down”</span><br></pre></td></tr></table></figure>
+<p>后打开你的无线网卡</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig ra0 192.168.1.xxx up</span><br></pre></td></tr></table></figure>
+<p>解释同上</p>
+<h3 id="此时网卡已经启动"><a href="#此时网卡已经启动" class="headerlink" title="此时网卡已经启动"></a>此时网卡已经启动</h3><p>但是你会发现用普通的wifi指令会提示找不到设备，如“scan-wifi”，因为随身wifi属于用户装置的设备，无法使用这些指令进行操控</p>
+<p>所以在这里，我们得使用“iwlist”</p>
+<p>输入iwlist的时候，你可以看到iwlist的各种功能，你可以根据功能提示进行相应的操作</p>
+<p>比如，我们需要查看周围的热点信息，我们可以使用指令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwlist ra0 scan | less</span><br></pre></td></tr></table></figure>
+<p>后界面中即会显示附近的热点信息</p>
+<p>但是连接WIFI需要热点需要使用“iwconfig”这个操作指令</p>
+<p>现在以连接假设附近有一个essid为“Test”的开放网络为例：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwconfig ra0 essid “Test”</span><br></pre></td></tr></table></figure>
+<p>该指令结束后，即可在界面中查看到连接是否成功的信息</p>
+<p>ps：其他更多热点加密方式的连接，请大家另外查询更多的指令信息，这里不多做讲解</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>完成以上部分，你的随身wifi就移植成功，并且能正常使用，接下的怎么应用怎么开发，就看你了~</p>
 
       
-
     </div>
+    
+    
+    
+
+    <div>
+      
+        
+      
+    </div>
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    半句唐诗
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://halfofpoetry.github.io/2020/05/07/Arm%E6%9D%BFLinux%E7%A7%BB%E6%A4%8D%E9%9A%8F%E8%BA%ABWIFI/" title="Arm板Linux移植随身WIFI">http://halfofpoetry.github.io/2020/05/07/Arm%E6%9D%BFLinux%E7%A7%BB%E6%A4%8D%E9%9A%8F%E8%BA%ABWIFI/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Arm-Linux/" rel="tag"># Arm-Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/07/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/" rel="next" title="DLL注入之注册表注入">
+                <i class="fa fa-chevron-left"></i> DLL注入之注册表注入
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -409,6 +531,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -429,8 +555,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -508,6 +643,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Arm板Linux移植随身WIFI并连接上网络，如米WIFI"><span class="nav-number">1.</span> <span class="nav-text">Arm板Linux移植随身WIFI并连接上网络，如米WIFI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首先"><span class="nav-number">2.</span> <span class="nav-text">首先</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压完后"><span class="nav-number">3.</span> <span class="nav-text">解压完后</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后进入"><span class="nav-number">4.</span> <span class="nav-text">后进入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随后转到驱动源码根目录下执行，make指令"><span class="nav-number">5.</span> <span class="nav-text">随后转到驱动源码根目录下执行，make指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装成功后-即可插上相应的设备（随身WIFI）"><span class="nav-number">6.</span> <span class="nav-text">安装成功后,即可插上相应的设备（随身WIFI）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以上内容完成后，可以使用"><span class="nav-number">7.</span> <span class="nav-text">以上内容完成后，可以使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#此时网卡已经启动"><span class="nav-number">8.</span> <span class="nav-text">此时网卡已经启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">9.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -676,6 +827,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

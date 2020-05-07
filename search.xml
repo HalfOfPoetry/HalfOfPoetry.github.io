@@ -1,25 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>【AI记录】机器学习与深度学习</title>
-    <url>/2020/04/30/Deep-Learning/</url>
-    <content><![CDATA[<h3 id="今天来讲讲机器学习-Machine-Learning，ML-与深度学习（Deep-Learning，DL）"><a href="#今天来讲讲机器学习-Machine-Learning，ML-与深度学习（Deep-Learning，DL）" class="headerlink" title="今天来讲讲机器学习(Machine Learning，ML)与深度学习（Deep Learning，DL）"></a>今天来讲讲机器学习(Machine Learning，ML)与深度学习（Deep Learning，DL）</h3><p>首先，要论这两个东西，得先了解人工智能（AI），AI与机器学习以及深度学习之间的关系，用集合关系来描述，就是：</p>
-<p>深度学习包含于机器学习，机器学习包含于AI；</p>
-<p>机器学习 作为AI的子领域，也是其核心，可以这么理解：</p>
-<p>设计和分析一些算法，可以让计算机进行自动学习。</p>
-<p>深度学习 设计灵感，是来源于人类大脑的工作方式，利用深度神经网络来解决特征表达的一种学习过程。为了提高深层神经网络的训练效果，人们对神经元的连接方法以及激活函数等方面做出了调整。其目的在于建立、模拟人脑进行分析学习的神经网络，模仿人脑的机制来解释数据，如文本、图像、声音。</p>
-<h3 id="1-应用区别"><a href="#1-应用区别" class="headerlink" title="1.应用区别"></a>1.应用区别</h3><p>机器学习：指纹识别，特征物体检测等</p>
-<p>深度学习：文字识别，人链技术，语义分析，智能监控，智能硬件，智能教育，智能医疗等</p>
-<h3 id="2-需求的数据量"><a href="#2-需求的数据量" class="headerlink" title="2.需求的数据量"></a>2.需求的数据量</h3><p>机器学习：数据量较小</p>
-<p>深度学习：在机器学习的基础上，若有比较庞大的数据量，深度学习的效果更加显著</p>
-<h3 id="3-执行时间"><a href="#3-执行时间" class="headerlink" title="3.执行时间"></a>3.执行时间</h3><p>机器学习：相对较少</p>
-<p>深度学习：由于训练受到数据量的影响，需要大量的时间进行</p>
-<h3 id="4-问题解决方式"><a href="#4-问题解决方式" class="headerlink" title="4.问题解决方式"></a>4.问题解决方式</h3><p>机器学习：遵循标准化程序，将问题拆分，分别解决，之后整合得出答案</p>
-<p>深度学习：不拆分，集中解决</p>
-<h3 id="选择推荐："><a href="#选择推荐：" class="headerlink" title="选择推荐："></a>选择推荐：</h3><p>传统的机器学习算法比较复杂，不太容易理解，深度学习引入了人工神经网络，比机器学习的表现要好得多，在数据量足够庞大的情况下，个人建议使用选择深度学习。</p>
+    <title>Arm板Linux移植随身WIFI</title>
+    <url>/2020/05/07/Arm%E6%9D%BFLinux%E7%A7%BB%E6%A4%8D%E9%9A%8F%E8%BA%ABWIFI/</url>
+    <content><![CDATA[<h3 id="Arm板Linux移植随身WIFI并连接上网络，如米WIFI"><a href="#Arm板Linux移植随身WIFI并连接上网络，如米WIFI" class="headerlink" title="Arm板Linux移植随身WIFI并连接上网络，如米WIFI"></a>Arm板Linux移植随身WIFI并连接上网络，如米WIFI</h3><p>本文是本人博客的版本迁移，将叙述本人2015年Arm板linux系统上实现米wifi驱动的移植以及到连接上wifi的全过程，360wifi等类似，本文中会有提到</p>
+<p>PS：交叉编译等本文不多做讲解</p>
+<p>在执行之前，先确定你linux系统下armlinux系统的源码目录在哪里（Ps：我的源码目录为/usr/linux2.6.32.2）</p>
+<h3 id="首先"><a href="#首先" class="headerlink" title="首先"></a>首先</h3><p>得先获取无线网卡驱动的源码，后，解压到linux系统上，（ps：这里我是解压在/usr目录下）</p>
+<p>以下为无线网卡驱动的源码下载地址，大家可以去下载：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;download.csdn.net&#x2F;detail&#x2F;u013267687&#x2F;8671849</span><br></pre></td></tr></table></figure>
+<h3 id="解压完后"><a href="#解压完后" class="headerlink" title="解压完后"></a>解压完后</h3><p>在WIFI驱动的源代码根目录下，执行gedit MakeFile，进行修改，修改内容如下：</p>
+<p>找到“PLATFORM = PC”语句将其注释掉，即修改为：“#PLATFORM = PC”</p>
+<p>找到“#PLATFORM = SMDK”语句将其注释的语句解除，即“PLATFORM = SMDK”</p>
+<p>修改完以上内容还需修改一处：</p>
+<p>找到“ifeq ($(PLATFORM),SMDK)”语句，将其后两句语句修改为如下内容：</p>
+<p>LINUX_SRC = /usr/linux-2.6.32.2 //注意，此处为你的源码目录<br>CROSS_COMPILE = arm-linux-</p>
+<p>修改完以上后，即可保存关闭该文件</p>
+<h3 id="后进入"><a href="#后进入" class="headerlink" title="后进入"></a>后进入</h3><p>/usr/DPO_MT7601U_LinuxSTA_3.0.0.4_20130913/common目录，执行</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">gedit rtusb_dev_id.c”命令</span><br></pre></td></tr></table></figure>
+
+<p>修改该文件：<br>找到</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> MT7601U</span></span><br><span class="line">&#123;USB_DEVICE(<span class="number">0x148f</span>,<span class="number">0x6370</span>)&#125;, <span class="comment">/* Ralink 6370 */</span></span><br><span class="line">&#123;USB_DEVICE(<span class="number">0x148f</span>,<span class="number">0x7601</span>)&#125;, <span class="comment">/* MT 6370 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* MT7601U */</span>”</span></span><br><span class="line"></span><br><span class="line">在其中添加上“&#123;USB_DEVICE(<span class="number">0x2717</span>,<span class="number">0x4106</span>)&#125;,<span class="comment">/* XiaoMi wifi */</span>”</span><br></pre></td></tr></table></figure>
+<p>如图：<br><img src="https://img-blog.csdn.net/20150507134811131?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI2NzY4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="pic"></p>
+<p>这里要注意的是，如果你是其他的随身wifi设备的话，可以根据以下提示内容进行添加：</p>
+<p>{USB_DEVICE(0x148f,0x760b)},/* 360 Wifi 2 Gen */</p>
+<p>{USB_DEVICE(0x2955,0x1001)},/* Xiao Du Wifi */</p>
+<p>{USB_DEVICE(0x2a5f,0x1000)},/* Quan Min Wifi */</p>
+<h3 id="随后转到驱动源码根目录下执行，make指令"><a href="#随后转到驱动源码根目录下执行，make指令" class="headerlink" title="随后转到驱动源码根目录下执行，make指令"></a>随后转到驱动源码根目录下执行，make指令</h3><p>随后linux就会根据你刚刚修改的配置进行相应的编译，生成.ko文件</p>
+<p>路径在界面中可以找到，如图：<br><img src="https://img-blog.csdn.net/20150507135609229?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzI2NzY4Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="pic2"><br>随后我们到该目录下将“mt7601Usta.ko”文件拷贝到ARM板中</p>
+<p>但是在这操作过程中有一个很重要的点别漏了，否则无线网卡一样无法驱动成功</p>
+<p>需要做的是，将该驱动源码根目录下的“RT2870STA.dat”文件拷贝到板中的”/etc/Wireless/RT2870STA/“目录下。</p>
+<p>随后在Arm板的linux系统中安装刚刚编译好的驱动“insmod mt7601Usta.ko”，安装是否成功除了可以看提示外，还可以使用命令“lsmod”查看是否有安装该设备</p>
+<p>PS：这里安装失败的话，一般是内核版本的问题，请检查你的内核版本是否与你linux下的armlinux的内核版本是否一致，或者arm-linux-gcc的版本是否符合要求，该问题在这里不多做解决的讲解</p>
+<h3 id="安装成功后-即可插上相应的设备（随身WIFI）"><a href="#安装成功后-即可插上相应的设备（随身WIFI）" class="headerlink" title="安装成功后,即可插上相应的设备（随身WIFI）"></a>安装成功后,即可插上相应的设备（随身WIFI）</h3><p>不久，就会提示识别成功，出现一大段码，我就不贴出了</p>
+<p>做到这里，你已经成功的将随身wifi移植到你的ARM板上了，但是你会发现，重启之后，该设备驱动又不见了，这是由于arm板每次重启就会还原一次这些驱动设备，所以，你需要修改初始化文件：</p>
+<p>可以修改/etc/init.d目录下的rcS文件，在其中加入安装.ko文件的指令（PS：注意你的.ko文件的路径）<br>至此，已经驱动算是相对完整的成功了，也不担心重启还原的问题了，接下来，就讲解一下如何使用它来连接热点，即WIFI</p>
+<h3 id="以上内容完成后，可以使用"><a href="#以上内容完成后，可以使用" class="headerlink" title="以上内容完成后，可以使用"></a>以上内容完成后，可以使用</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ifconfig -a</span><br></pre></td></tr></table></figure>
+<p>就可以查看到你的无线网卡设备，即你的随身wifi，一般默认的设备名为“ra0”，默认是没有配置其他信息的，所以我们需要给它简单的配置一下，方便后期开发</p>
+<p>但是在使用之前需要将arm板上的集成网卡先关闭掉，一般默认的名字为“eth0”，但是在关闭之前，我们得先执行以下操作</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ifconfig eth0 192.168.1.xxx</span><br></pre></td></tr></table></figure>
+<p>xxx的取值为2-255，不要取230，或者身边已有的ip，因为，在同一网段上，不允许有两个相同的ip出现，而一般板上的初始ip为230， 所以要避开这些点，方便后期开发（PS：此处为建议）</p>
+<p>之后关闭该网卡</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ifconfig eth0 down”</span><br></pre></td></tr></table></figure>
+<p>后打开你的无线网卡</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ifconfig ra0 192.168.1.xxx up</span><br></pre></td></tr></table></figure>
+<p>解释同上</p>
+<h3 id="此时网卡已经启动"><a href="#此时网卡已经启动" class="headerlink" title="此时网卡已经启动"></a>此时网卡已经启动</h3><p>但是你会发现用普通的wifi指令会提示找不到设备，如“scan-wifi”，因为随身wifi属于用户装置的设备，无法使用这些指令进行操控</p>
+<p>所以在这里，我们得使用“iwlist”</p>
+<p>输入iwlist的时候，你可以看到iwlist的各种功能，你可以根据功能提示进行相应的操作</p>
+<p>比如，我们需要查看周围的热点信息，我们可以使用指令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">iwlist ra0 scan | less</span><br></pre></td></tr></table></figure>
+<p>后界面中即会显示附近的热点信息</p>
+<p>但是连接WIFI需要热点需要使用“iwconfig”这个操作指令</p>
+<p>现在以连接假设附近有一个essid为“Test”的开放网络为例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">iwconfig ra0 essid “Test”</span><br></pre></td></tr></table></figure>
+<p>该指令结束后，即可在界面中查看到连接是否成功的信息</p>
+<p>ps：其他更多热点加密方式的连接，请大家另外查询更多的指令信息，这里不多做讲解</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>完成以上部分，你的随身wifi就移植成功，并且能正常使用，接下的怎么应用怎么开发，就看你了~</p>
 ]]></content>
       <tags>
-        <tag>Deep-Learing</tag>
+        <tag>Arm-Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -41,6 +81,28 @@
 ]]></content>
       <tags>
         <tag>Dll_Inject</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【AI记录】机器学习与深度学习</title>
+    <url>/2020/04/30/Deep-Learning/</url>
+    <content><![CDATA[<h3 id="今天来讲讲机器学习-Machine-Learning，ML-与深度学习（Deep-Learning，DL）"><a href="#今天来讲讲机器学习-Machine-Learning，ML-与深度学习（Deep-Learning，DL）" class="headerlink" title="今天来讲讲机器学习(Machine Learning，ML)与深度学习（Deep Learning，DL）"></a>今天来讲讲机器学习(Machine Learning，ML)与深度学习（Deep Learning，DL）</h3><p>首先，要论这两个东西，得先了解人工智能（AI），AI与机器学习以及深度学习之间的关系，用集合关系来描述，就是：</p>
+<p>深度学习包含于机器学习，机器学习包含于AI；</p>
+<p>机器学习 作为AI的子领域，也是其核心，可以这么理解：</p>
+<p>设计和分析一些算法，可以让计算机进行自动学习。</p>
+<p>深度学习 设计灵感，是来源于人类大脑的工作方式，利用深度神经网络来解决特征表达的一种学习过程。为了提高深层神经网络的训练效果，人们对神经元的连接方法以及激活函数等方面做出了调整。其目的在于建立、模拟人脑进行分析学习的神经网络，模仿人脑的机制来解释数据，如文本、图像、声音。</p>
+<h3 id="1-应用区别"><a href="#1-应用区别" class="headerlink" title="1.应用区别"></a>1.应用区别</h3><p>机器学习：指纹识别，特征物体检测等</p>
+<p>深度学习：文字识别，人链技术，语义分析，智能监控，智能硬件，智能教育，智能医疗等</p>
+<h3 id="2-需求的数据量"><a href="#2-需求的数据量" class="headerlink" title="2.需求的数据量"></a>2.需求的数据量</h3><p>机器学习：数据量较小</p>
+<p>深度学习：在机器学习的基础上，若有比较庞大的数据量，深度学习的效果更加显著</p>
+<h3 id="3-执行时间"><a href="#3-执行时间" class="headerlink" title="3.执行时间"></a>3.执行时间</h3><p>机器学习：相对较少</p>
+<p>深度学习：由于训练受到数据量的影响，需要大量的时间进行</p>
+<h3 id="4-问题解决方式"><a href="#4-问题解决方式" class="headerlink" title="4.问题解决方式"></a>4.问题解决方式</h3><p>机器学习：遵循标准化程序，将问题拆分，分别解决，之后整合得出答案</p>
+<p>深度学习：不拆分，集中解决</p>
+<h3 id="选择推荐："><a href="#选择推荐：" class="headerlink" title="选择推荐："></a>选择推荐：</h3><p>传统的机器学习算法比较复杂，不太容易理解，深度学习引入了人工神经网络，比机器学习的表现要好得多，在数据量足够庞大的情况下，个人建议使用选择深度学习。</p>
+]]></content>
+      <tags>
+        <tag>Deep-Learing</tag>
       </tags>
   </entry>
   <entry>
